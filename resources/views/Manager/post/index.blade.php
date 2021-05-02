@@ -43,7 +43,7 @@
                                             <th>{{ t("Title") }}</th>
                                             <th>{{ t("Expire Date") }}</th>
                                             <th>{{ t("Company Name") }}</th>
-                                            <th>{{ t("Skills Count") }}</th>
+                                            <th>{{ t("Applicants Count") }}</th>
                                             <th>{{ t("Status") }}</th>
                                             <th>{{ t("Actions") }}</th>
                                         </tr>
@@ -134,7 +134,7 @@
                         {data: 'title', name: 'profile_image'},
                         {data: 'expire_date', name: 'expire_date'},
                         {data: 'company_name', name: 'company_name'},
-                        {data: 'skills_count', name: 'status_value'},
+                        {data: 'applicants_count', name: 'applicants_count'},
                         {data: 'status_value', name: 'status_value'},
                         {data: 'action', name: 'action', orderable: false, searchable: false},
                     ]

@@ -28,6 +28,9 @@ class User extends Authenticatable
         'university_id'
     ];
 
+    protected $appends  = ['degree_name', 'specialize_name', 'university_name'];
+
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -54,7 +57,6 @@ class User extends Authenticatable
         return $this->belongsToMany(Skill::class, 'user_skills');
     }
 
-
     public function degree()
     {
         return $this->belongsTo(Degree::class);
@@ -69,6 +71,27 @@ class User extends Authenticatable
     {
         return $this->belongsTo(University::class);
     }
+
+
+
+    public function getDegreeNameAttribute()
+    {
+        return $this->degree ? $this->degree->name : null;
+    }
+
+    public function getSpecializeNameAttribute()
+    {
+        return $this->specialize ? $this->specialize->name : null;
+    }
+
+    public function getUniversityNameAttribute()
+    {
+        return $this->university ? $this->university->name : null;
+    }
+
+
+
+
 
     // الطلبات
     public function applicants()

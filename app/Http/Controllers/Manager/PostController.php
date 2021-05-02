@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Manager;
 
 use App\Http\Controllers\Controller;
+use App\Models\Applicant;
 use App\Models\Company;
 use App\Models\Post;
 use App\Models\Skill;
@@ -40,20 +41,36 @@ class PostController extends Controller
         $data = Post::all();
         return Datatables::of($data)
             ->addIndexColumn()
-            ->addColumn('skills_count', function ($row) {
-                $btn = "<span class='badge badge-primary'>" . $row->skills->count() . "</span>";
+
+            ->addColumn('title', function ($row) {
+                $btn = \Str::limit($row->title, 20);
+                return $btn;
+            })
+            ->addColumn('applicants_count', function ($row) {
+                $btn = "<a  href='" . route('post.show', $row->id) . "'>
+                        <span class='badge badge-secondary'>" . $row->applicants->count() . "</span>
+                    </a>";
                 return $btn;
             })
 
+
+
             ->addColumn('company_name', function ($row) {
                 $btn = "<a  href='" . route('company.show', $row->company->id) . "'>
-                    <span class='badge badge-primary'>" . $row->company_name . "</span>
+                    <span class='badge badge-secondary'>" . $row->company_name . "</span>
                 </a>";
                 return $btn;
             })
             ->addColumn('action', function ($row) {
 
                 $btn = '';
+
+
+                $btn .= "<a data-toggle='tooltip' data-placement='top' data-original-title='تعديل'
+                        href=" . route('post.show', $row->id) . "
+                        class=' btn btn-outline-primary btn-sm  btn-icon btn-icon-sm'>
+                        <i class='fa fa-eye'></i>
+                    </a> ";
 
                 $btn .= "<a data-toggle='tooltip' data-placement='top' data-original-title='تعديل'
                         href=" . route('post.edit', $row->id) . "
@@ -69,7 +86,7 @@ class PostController extends Controller
 
                 return $btn;
             })
-            ->rawColumns(['action', 'skills_count', 'status_value', 'company_name', 'timeDate'])
+            ->rawColumns(['action', 'skills_count', 'title', 'status_value', 'applicants_count', 'company_name', 'timeDate'])
             ->make(true);
     }
 
@@ -114,9 +131,18 @@ class PostController extends Controller
      * @param \App\Models\Post $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($id)
     {
-        //
+        $post = Post::find($id);
+        if (!$post) {
+            Toastr::error(t("Not Found"));
+            return redirect()->route('post.index');
+        }
+
+        $applicants = Applicant::where('post_id', $post->id)->get();
+        return view("Manager.post.show")
+            ->with('applicants', $applicants)
+            ->with('post', $post);
     }
 
     /**
@@ -186,5 +212,27 @@ class PostController extends Controller
         $post->delete();
         Toastr::success(t('Success To Delete Data'));
         return redirect()->route('post.index');
+    }
+
+
+    public function status($id)
+    {
+        $post = Post::find($id);
+        if (!$post) {
+            Toastr::error(t("Not Found"));
+            return redirect()->route('post.index');
+        }
+        if ($post->status == 1) {
+            $post->update([
+                'status' => 0,
+            ]);
+        } else {
+            $post->update([
+                'status' => 1,
+            ]);
+        }
+
+        Toastr::success(t('Success To Chnage Status'));
+        return redirect()->back();
     }
 }

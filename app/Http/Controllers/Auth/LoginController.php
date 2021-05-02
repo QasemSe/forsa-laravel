@@ -38,10 +38,21 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
-        $this->middleware('guest:manager')->except('logout');
+        $this->middleware('guest:manager')->except('logoutManager');
+        $this->middleware('guest:company')->except('logoutCompany');
     }
 
 
+
+
+    // Manager
+
+    public function logoutManager(Request $request)
+    {
+        Auth::guard('manager')->logout();
+
+        return redirect()->route('showManagerLogin');
+    }
 
 
     public function showManagerLogin()
@@ -59,16 +70,48 @@ class LoginController extends Controller
 
         if (Auth::guard('manager')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
 
-            return redirect()->intended('/manager/dashboard');
+            return redirect()->route('dashboard.index');
         }
 
         return back()->withInput($request->only('email', 'remember'));
     }
 
 
-    public function logout(Request $request)
+
+
+
+
+
+
+
+
+
+    // company/
+    public function logoutCompany(Request $request)
     {
-        Auth::guard('manager')->logout();
-        return redirect()->route('showManagerLogin');
+        Auth::guard('company')->logout();
+
+        return redirect()->route('showCompanyLogin');
+    }
+
+    public function showCompanyLogin()
+    {
+        return view('auth.company_login');
+    }
+
+    public function loginCompany(Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'required|exists:companies,email',
+            'password' => 'required',
+        ]);
+
+
+        if (Auth::guard('company')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
+
+            return redirect()->intended('/');
+        }
+
+        return back()->withInput($request->only('email', 'remember'));
     }
 }

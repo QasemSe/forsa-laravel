@@ -26,6 +26,12 @@ class Post extends Model
         return $this->belongsToMany(Skill::class, 'post_skills');
     }
 
+    public function applicants()
+    {
+        return $this->hasMany(Applicant::class);
+    }
+
+
 
     public function company()
     {
@@ -34,11 +40,7 @@ class Post extends Model
 
     public function getCompanyNameAttribute()
     {
-        if ($this->company) {
-            return $this->company->name;
-        } else {
-            return null;
-        }
+        return $this->company ? $this->company->name : null;
     }
 
     public function getStatusValueAttribute()

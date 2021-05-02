@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Company;
 use App\Models\Manager;
 use App\Models\User;
 
@@ -47,6 +48,10 @@ return [
             'driver' => 'session',
             'provider' => 'managers',
         ],
+        'company' => [
+            'driver' => 'session',
+            'provider' => 'companies',
+        ],
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -80,6 +85,11 @@ return [
         'managers' => [
             'driver' => 'eloquent',
             'model' => Manager::class,
+        ],
+
+        'companies' => [
+            'driver' => 'eloquent',
+            'model' => Company::class,
         ],
 
 

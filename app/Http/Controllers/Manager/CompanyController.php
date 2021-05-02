@@ -51,7 +51,7 @@ class CompanyController extends Controller
 
             ->addColumn('posts_count', function ($row) {
                 $btn = "<a href='" . route('company.show', $row->id) . "'>
-                    <span class='badge badge-primary'>" . $row->posts->count() . "</span>
+                    <span class='badge badge-secondary'>" . $row->posts->count() . "</span>
                 </a>";
                 return $btn;
             })

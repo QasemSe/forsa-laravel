@@ -1,77 +1,115 @@
-@extends('layouts.app')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+<!DOCTYPE html>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
+<html lang="{{ app()->getLocale() }}" dir="{{ LaravelLocalization::getCurrentLocaleDirection() }}">
+	<!--begin::Head-->
+	<head><base href="../../../">
+		<meta charset="utf-8" />
+		<title>Login</title>
+		<meta name="description" content="Login page example" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<!--begin::Fonts-->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+		<!--end::Fonts-->
+		<!--begin::Page Custom Styles(used by this page)-->
+		<link href="{{ asset('Backend/css/login-1.css')}}" rel="stylesheet" type="text/css" />
 
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+        @if (app()->getlocale() == "en")
+            <link href="{{ asset('Backend/css/style.bundle.css')}}" rel="stylesheet" type="text/css"/>
+            <link href="{{ asset('Backend/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
+        @else
+            <link href="{{ asset('Backend/css/style.bundle.rtl.css')}}" rel="stylesheet" type="text/css"/>
+            <link href="{{ asset('Backend/plugins/global/plugins.bundle.rtl.css')}}" rel="stylesheet" type="text/css" />
 
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+        @endif
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+		<link rel="shortcut icon" href="{{ asset('Backend/media/logos/favicon.ico')}}" />
+	</head>
+	<!--end::Head-->
+	<!--begin::Body-->
+	<body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
+		<!--begin::Main-->
+		<div class="d-flex flex-column flex-root">
+			<!--begin::Login-->
+			<div class="login login-1 login-signin-on d-flex flex-column flex-lg-row flex-column-fluid bg-white" id="kt_login">
+				<!--begin::Aside-->
+				<div class="login-aside d-flex flex-column flex-row-auto" style="background-color: #F2C98A;">
+					<!--begin::Aside Top-->
+					<div class="d-flex flex-column-auto flex-column pt-lg-40 pt-15">
+						<!--begin::Aside header-->
+						<a href="#" class="text-center mb-10">
+							<img src="{{ asset('Backend/media/logos/logo-letter-1.png')}}" class="max-h-70px" alt="" />
+						</a>
+					</div>
+					<!--end::Aside Top-->
+					<!--begin::Aside Bottom-->
+					<div class="aside-img d-flex flex-row-fluid bgi-no-repeat bgi-position-y-bottom bgi-position-x-center" style="background-image: url({{ asset('Backend/media/svg/illustrations/login-visual-5.svg')}})"></div>
+					<!--end::Aside Bottom-->
+				</div>
+				<!--begin::Aside-->
+				<!--begin::Content-->
+				<div class="login-content flex-row-fluid d-flex flex-column justify-content-center position-relative overflow-hidden p-7 mx-auto">
+					<!--begin::Content body-->
+					<div class="d-flex flex-column-fluid flex-center">
+						<!--begin::Signin-->
+						<div class="login-form login-signin">
+							<!--begin::Form-->
+							<form  method="POST" action="{{ route('register') }}">
+                                @csrf
+								<!--begin::Title-->
+								<div class="pb-13 pt-lg-0 pt-5">
+									<h3 class="font-weight-bolder text-dark font-size-h4 font-size-h1-lg text-center">{{ t('Register') }}</h3>
+								</div>
+								<!--begin::Title-->
+								<!--begin::Form group-->
+                                @include('Manager.layout.notification')
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <div class="form-group ">
+									<label class="font-size-h6 font-weight-bolder text-dark">{{ t('Name') }}</label>
+									<input class="form-control form-control-solid h-auto py-6 px-6 rounded-lg" type="text"
+                                     name="name" autocomplete="off" />
+								</div>
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+								<div class="form-group ">
+									<label class="font-size-h6 font-weight-bolder text-dark">{{ t('Email') }}</label>
+									<input class="form-control form-control-solid h-auto py-6 px-6 rounded-lg" type="text"
+                                     name="email" autocomplete="off" />
+								</div>
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+								<div class="form-group ">
+									<div class="d-flex justify-content-between mt-n5">
+										<label class="font-size-h6 font-weight-bolder text-dark pt-5">{{ t('Password') }}</label>
+									</div>
+									<input class="form-control form-control-solid h-auto py-6 px-6 rounded-lg" type="password" name="password" autocomplete="off" />
+								</div>
+                                <div class="form-group ">
+									<div class="d-flex justify-content-between mt-n5">
+										<label class="font-size-h6 font-weight-bolder text-dark pt-5">{{ t('Confirm Password') }}</label>
+									</div>
+									<input class="form-control form-control-solid h-auto py-6 px-6 rounded-lg" type="password" name="password_confirmation" autocomplete="off" />
+								</div>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+								<div class="pb-lg-0 pb-5  text-center">
+									<button type="submit"  class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3">{{ t("Register") }}</button>
+								</div>
+								<!--end::Action-->
+							</form>
+							<!--end::Form-->
+						</div>
+						<!--end::Signin-->
+						<!--begin::Signup-->
 
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+					</div>
 
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
+				</div>
+				<!--end::Content-->
+			</div>
+			<!--end::Login-->
+		</div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection
+	</body>
+	<!--end::Body-->
+</html>
+

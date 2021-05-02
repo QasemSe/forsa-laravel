@@ -53,8 +53,8 @@ class UserController extends Controller
                 return $btn;
             })
 
-            ->addColumn('skills_count', function ($row) {
-                $btn = "<span class='badge badge-primary'>" . $row->skills->count() . "</span>";
+            ->addColumn('applicants_count', function ($row) {
+                $btn = "<span class='badge badge-primary'>" . $row->applicants->count() . "</span>";
                 return $btn;
             })
 
@@ -77,7 +77,7 @@ class UserController extends Controller
 
                 return $btn;
             })
-            ->rawColumns(['action', 'image', 'skills_count', 'timeDate'])
+            ->rawColumns(['action', 'image', 'applicants_count', 'timeDate'])
             ->make(true);
     }
 

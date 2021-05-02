@@ -91,6 +91,7 @@ class ApplicantController extends Controller
     }
 
 
+
     public function update(Request $request, $id)
     {
         $applicant = Applicant::find($id);
@@ -108,5 +109,23 @@ class ApplicantController extends Controller
 
         Toastr::success(t('Success To Update Data'));
         return redirect()->route('applicant.index');
+    }
+
+
+
+    public function status($id, Request $request)
+    {
+        $applicant = Applicant::where('post_id', $request->post_id)->where('id', $id)->first();
+        if (!$applicant) {
+            Toastr::error(t("Not Found"));
+            return redirect()->route('post.index');
+        }
+
+        $applicant->update([
+            'status' => $request->status
+        ]);
+
+        Toastr::success(t('Success To Chnage Status'));
+        return redirect()->back();
     }
 }

@@ -16,11 +16,19 @@ class RedirectIfAuthenticated
      * @param  string|null  $guard
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle($request, Closure $next, $guard = null)
     {
-        if (Auth::guard('manager')->check()) {
+
+
+        if ($guard == "manager" && Auth::guard('manager')->check()) {
             return redirect()->route('dashboard.index');
         }
+
+        if ($guard == "company" && Auth::guard('company')->check()) {
+            return redirect()->route('myCompany.dashboard');
+        }
+
+
 
         return $next($request);
     }

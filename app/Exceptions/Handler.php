@@ -17,18 +17,15 @@ class Handler extends ExceptionHandler
         }
 
         if ($request->is('manager') || $request->is('manager/*')) {
-            return redirect()->route('showManagerLogin');
+            return redirect()->guest('showManagerLogin');
         }
 
-        // if ($request->is('employee') || $request->is('employee/*')) {
-        //     return redirect()->guest('/showEmployeeForm');
-        // }
 
-        // if ($request->is('client') || $request->is('client/*')) {
-        //     return redirect()->guest('/login');
-        // }
+        if ($request->is('myCompany') || $request->is('myCompany/*')) {
+            return redirect()->guest('showCompanyLogin');
+        }
 
-        return redirect()->guest(route('login'));
+        return redirect()->guest('login');
     }
 
 

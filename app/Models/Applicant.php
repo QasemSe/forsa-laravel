@@ -21,29 +21,17 @@ class Applicant extends Model
 
     public function getPostTitleAttribute()
     {
-        if ($this->post) {
-            return $this->post->title;
-        } else {
-            return null;
-        }
+        return $this->post ? $this->post->title : null;
     }
 
     public function getUserNameAttribute()
     {
-        if ($this->user) {
-            return $this->user->name;
-        } else {
-            return null;
-        }
+        return $this->user ? $this->user->name : null;
     }
 
     public function getCompanyNameAttribute()
     {
-        if ($this->post) {
-            return $this->post->company ? $this->post->company->name : '';
-        } else {
-            return null;
-        }
+        return $this->post->company ? $this->post->company->name : null;
     }
 
 

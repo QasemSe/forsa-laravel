@@ -6,10 +6,14 @@ namespace App\Models;
 use App\Models\CompanyLink;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class Company extends Model
+class Company extends Authenticatable
 {
-    use  SoftDeletes;
+    use  SoftDeletes, Notifiable;
+
+    protected $guard = 'company';
 
     protected $fillable = [
         'name',
@@ -23,6 +27,12 @@ class Company extends Model
         'description',
         'status',
     ];
+
+
+    protected $hidden = [
+        'password',
+    ];
+
 
     protected $appends  = ['status_value'];
 

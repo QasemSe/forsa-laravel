@@ -31,6 +31,7 @@ class DashbaordController extends Controller
      */
     public function index()
     {
+
         $degrees = Degree::all();
         $specializes = Specialize::all();
         $universities = University::all();

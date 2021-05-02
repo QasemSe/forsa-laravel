@@ -21,10 +21,9 @@
         @else
             <link href="{{ asset('Backend/css/style.bundle.rtl.css')}}" rel="stylesheet" type="text/css"/>
             <link href="{{ asset('Backend/plugins/global/plugins.bundle.rtl.css')}}" rel="stylesheet" type="text/css" />
-
         @endif
 
-		<link rel="shortcut icon" href="{{ asset('Backend/media/logos/favicon.ico')}}" />
+		<link rel="shortcut icon" href="{{ asset('Backend/img/logo.png') }}" />
 	</head>
 	<!--end::Head-->
 	<!--begin::Body-->
@@ -39,7 +38,7 @@
 					<div class="d-flex flex-column-auto flex-column pt-lg-40 pt-15">
 						<!--begin::Aside header-->
 						<a href="#" class="text-center mb-10">
-							<img src="{{ asset('Backend/media/logos/logo-letter-1.png')}}" class="max-h-70px" alt="" />
+							<img src="{{ asset('Backend/img/logo-2.png') }}" class="max-h-70px" alt="" />
 						</a>
 					</div>
 					<!--end::Aside Top-->

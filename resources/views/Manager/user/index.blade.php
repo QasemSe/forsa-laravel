@@ -44,7 +44,7 @@
                                             <th>{{ t("Name") }}</th>
                                             <th>{{ t("Email") }}</th>
                                             <th>{{ t("Mobile Number") }}</th>
-                                            <th>{{ t("Skills Count") }}</th>
+                                            <th>{{ t("Applicants Count") }}</th>
                                             <th>{{ t("Actions") }}</th>
                                         </tr>
                                     </thead>
@@ -134,7 +134,7 @@
                         {data: 'name', name: 'name'},
                         {data: 'email', name: 'email'},
                         {data: 'mobile_number', name: 'mobile_number'},
-                        {data: 'skills_count', name: 'skills_count'},
+                        {data: 'applicants_count', name: 'applicants_count'},
                         {data: 'action', name: 'action', orderable: false, searchable: false},
                     ]
 

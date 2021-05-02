@@ -31,15 +31,13 @@ Route::group(
     ],
     function () {
 
-
-        Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+        // Manager
         Route::get('showManagerLogin', 'Auth\LoginController@showManagerLogin')->name('showManagerLogin');
         Route::post('loginManager', 'Auth\LoginController@loginManager')->name('loginManager');
+        Route::post('logoutManager', 'Auth\LoginController@logoutManager')->name('logoutManager');
 
 
-
-
-
+        // Manager
         Route::group(
             [
                 'namespace' => 'Manager',
@@ -47,6 +45,7 @@ Route::group(
                 'middleware' => 'manager'
             ],
             function () {
+
                 Route::get('/dashboard', 'DashbaordController@index')->name('dashboard.index');
                 Route::get('profile', 'DashbaordController@profile')->name('profile');
                 Route::post('updateProfile', 'DashbaordController@updateProfile')->name('updateProfile');
@@ -125,8 +124,10 @@ Route::group(
                 Route::get('post/add', 'PostController@create')->name('post.add');
                 Route::post('post/store', 'PostController@store')->name('post.store');
                 Route::get('post/getPostData', 'PostController@getPostData')->name('post.getPostData');
+                Route::get('post/show/{id}', 'PostController@show')->name('post.show');
                 Route::get('post/edit/{id}', 'PostController@edit')->name('post.edit');
                 Route::post('post/update/{id}', 'PostController@update')->name('post.update');
+                Route::post('post/status/{id}', 'PostController@status')->name('post.status');
                 Route::post('post/delete/{id}', 'PostController@destroy')->name('post.delete');
 
 
@@ -137,6 +138,7 @@ Route::group(
                 Route::get('applicant/show/{id}', 'ApplicantController@show')->name('applicant.show');
                 Route::get('applicant/edit/{id}', 'ApplicantController@edit')->name('applicant.edit');
                 Route::post('applicant/update/{id}', 'ApplicantController@update')->name('applicant.update');
+                Route::post('applicant/status/{id}/{post_id}', 'ApplicantController@status')->name('applicant.status');
                 Route::get('applicant/getApplicantData', 'ApplicantController@getApplicantData')->name('applicant.getApplicantData');
             }
         );

@@ -49,7 +49,6 @@
                                         <option {{ $applicant->status == 'review' ? 'selected' : '' }} value="review">{{ t('Review') }}</option>
                                         <option {{ $applicant->status == 'accepted' ? 'selected' : '' }} value="accepted">{{ t('Accepted') }}</option>
                                         <option {{ $applicant->status == 'canceled' ? 'selected' : '' }} value="canceled">{{ t('Canceled') }}</option>
-
                                     </select>
                                 </div>
 
