@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Company;
 
 use App\Http\Controllers\Controller;
+use App\Models\Applicant;
+use App\Models\CompanyLink;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 use Proengsoft\JsValidation\Facades\JsValidatorFacade as JsValidator;
@@ -12,6 +15,11 @@ use Illuminate\Support\Facades\Hash;
 
 class DashboardController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('company');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -19,72 +27,73 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::where('company_id', Auth::guard('company')->user()->id)->pluck('id');
+        $applicants = Applicant::orderBy('created_at', 'desc')->whereIn('post_id', $posts)->take(6)->get();
+
+
+        $posts_count = Post::where('company_id', Auth::guard('company')->user()->id)->count();
+        $applicants_count = Applicant::orderBy('created_at', 'desc')->whereIn('post_id', $posts)->count();
+
+        return view('Company.index')
+            ->with('posts_count', $posts_count)
+            ->with('applicants_count', $applicants_count)
+            ->with('applicants', $applicants);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function profile()
     {
-        //
+        $company = Auth::guard('company')->user();
+        $this->validationRules["name"] = 'required';
+        $this->validationRules["email"] = 'required|unique:companies,email,' . $company->id;
+        $this->validationRules["password"] = 'nullable|min:6';
+        $this->validationRules["profile_image"] = 'nullable|image';
+        $this->validationRules["banner_image"] = 'nullable|image';
+        $this->validationRules["mobile_number"] = 'required|numeric';
+        $this->validationRules["address"] = 'nullable';
+        $this->validationRules["state"] = 'nullable';
+        $this->validationRules["description"] = 'nullable';
+
+        $validator = JsValidator::make($this->validationRules, $this->validationMessages);
+        return view('Company.profile.profile')
+            ->with('validator', $validator)
+            ->with('company', $company);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function updateProfile(Request $request)
     {
-        //
-    }
+        $company = Auth::guard('company')->user();
+        $this->validationRules["name"] = 'required';
+        $this->validationRules["email"] = 'required|unique:companies,email,' . $company->id;
+        $this->validationRules["password"] = 'nullable|min:6';
+        $this->validationRules["profile_image"] = 'nullable|image';
+        $this->validationRules["banner_image"] = 'nullable|image';
+        $this->validationRules["mobile_number"] = 'required|numeric';
+        $this->validationRules["address"] = 'nullable';
+        $this->validationRules["state"] = 'nullable';
+        $this->validationRules["description"] = 'nullable';
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+        $request->validate($this->validationRules);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+        $data = $request->except('status');
+        $data['password'] = $request->get('password') ? bcrypt($request->get('password')) : $company->password;
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+        if ($request->file('profile_image')) {
+            $data['profile_image'] = $this->uploadImage($request->profile_image, 'company_image');
+        }
+        if ($request->file('banner_image')) {
+            $data['banner_image'] = $this->uploadImage($request->banner_image, 'company_image');
+        }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $company->update($data);
+
+        if ($company->link) {
+            $company->link->update($data);
+        } else {
+            $data['company_id'] = Auth::guard('company')->user()->id;
+            CompanyLink::create($data);
+        }
+
+        Toastr::success(t('Success To Update Data'));
+        return redirect()->route('myCompany.profile');
     }
 }

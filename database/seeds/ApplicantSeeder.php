@@ -12,6 +12,6 @@ class ApplicantSeeder extends Seeder
      */
     public function run()
     {
-        factory(Applicant::class,10)->create();
+        factory(Applicant::class, 10)->create();
     }
 }

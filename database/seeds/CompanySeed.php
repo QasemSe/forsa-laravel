@@ -12,6 +12,11 @@ class CompanySeed extends Seeder
      */
     public function run()
     {
-        factory(Company::class, 10)->create();
+        // factory(Company::class, 10)->create();
+        Company::create([
+            'name' => 'Company',
+            'email' => 'company@app.com',
+            'password' => bcrypt('123456'),
+        ]);
     }
 }

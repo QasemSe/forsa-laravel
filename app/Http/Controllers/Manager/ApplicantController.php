@@ -13,6 +13,13 @@ use Brian2694\Toastr\Facades\Toastr;
 
 class ApplicantController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('manager');
+    }
+
+
     public function index()
     {
         return view('Manager.applicant.index');
@@ -118,7 +125,7 @@ class ApplicantController extends Controller
         $applicant = Applicant::where('post_id', $request->post_id)->where('id', $id)->first();
         if (!$applicant) {
             Toastr::error(t("Not Found"));
-            return redirect()->route('post.index');
+            return redirect()->route('applicant.index');
         }
 
         $applicant->update([

@@ -20,6 +20,6 @@ class IsCompany
             return $next($request);
         }
 
-        return redirect()->route('showManagerLogin');
+        return redirect()->route('showCompanyLogin');
     }
 }

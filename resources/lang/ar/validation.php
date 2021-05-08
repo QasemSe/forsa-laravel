@@ -137,9 +137,9 @@ return [
         'skills_id' => 'المهارات',
         'expire_date' => 'تاريخ الإنتهاء',
 
-
-
-
+        'company_id' => 'الشركة',
+        'password_confirmation' => 'تأكيد كلمة المرور',
+        'profile_image' => 'الصورة',
 
 
 

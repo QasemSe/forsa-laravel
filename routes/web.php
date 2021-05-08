@@ -13,12 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-
-Auth::routes();
 
 
 
@@ -31,10 +26,14 @@ Route::group(
     ],
     function () {
 
+
         // Manager
         Route::get('showManagerLogin', 'Auth\LoginController@showManagerLogin')->name('showManagerLogin');
         Route::post('loginManager', 'Auth\LoginController@loginManager')->name('loginManager');
         Route::post('logoutManager', 'Auth\LoginController@logoutManager')->name('logoutManager');
+
+
+
 
 
         // Manager
@@ -133,7 +132,6 @@ Route::group(
 
 
                 // Applicant
-
                 Route::get('applicants', 'ApplicantController@index')->name('applicant.index');
                 Route::get('applicant/show/{id}', 'ApplicantController@show')->name('applicant.show');
                 Route::get('applicant/edit/{id}', 'ApplicantController@edit')->name('applicant.edit');

@@ -29,6 +29,11 @@ class RedirectIfAuthenticated
         }
 
 
+        if ($guard == "web" && Auth::check()) {
+            return redirect()->route('me.dashboard');
+        }
+
+
 
         return $next($request);
     }

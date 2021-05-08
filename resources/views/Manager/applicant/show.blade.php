@@ -36,15 +36,15 @@
                                     </div>
                                     <div class="d-flex align-items-center justify-content-between mt-4">
                                         <span class="font-weight-bold mr-2">{{ t('Specialize') }}:</span>
-                                        <span class="text-muted">{{ $applicant->user->specialize->name }}</span>
+                                        <span class="text-muted">{{ $applicant->user->specialize ?  $applicant->user->specialize->name : '' }}</span>
                                     </div>
                                     <div class="d-flex align-items-center justify-content-between mt-4">
                                         <span class="font-weight-bold mr-2">{{ t('Degrees') }}:</span>
-                                        <span class="text-muted">{{ $applicant->user->degree->name }}</span>
+                                        <span class="text-muted">{{ $applicant->user->degree ? $applicant->user->degree->name : '' }}</span>
                                     </div>
                                     <div class="d-flex align-items-center justify-content-between mt-4">
                                         <span class="font-weight-bold mr-2">{{ t('University') }}:</span>
-                                        <span class="text-muted">{{ $applicant->user->university->name }}</span>
+                                        <span class="text-muted">{{ $applicant->user->university ? $applicant->user->university->name : '' }}</span>
                                     </div>
                                     <hr>
                                     <div class="mt-4">
@@ -100,7 +100,7 @@
                                     <!--begin::Info-->
                                     <div class="d-flex flex-column mr-auto">
                                         <!--begin: Title-->
-                                        <a href="{{ route('company.show',$applicant->post->company->id) }}" class="card-title text-hover-primary font-weight-bolder font-size-h5 text-dark mb-1">{{ $applicant->post->company->name }}</a>
+                                        <a href="{{ route('company.show',$applicant->post->company->id) }}" class="card-title text-hover-primary font-weight-bolder font-size-h5 text-dark mb-1">{{ $applicant->company_name }}</a>
                                         <!--end::Title-->
                                     </div>
                                 </div>

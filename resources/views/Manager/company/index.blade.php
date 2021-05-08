@@ -43,7 +43,7 @@
                                             <th>{{ t("Profile Image") }}</th>
                                             <th>{{ t("Name") }}</th>
                                             <th>{{ t("Email") }}</th>
-                                            <th>{{ t("Mobile Number") }}</th>
+                                            {{-- <th>{{ t("Mobile Number") }}</th> --}}
                                             <th>{{ t("Posts Count") }}</th>
                                             <th>{{ t("Status") }}</th>
                                             <th>{{ t("Actions") }}</th>
@@ -134,7 +134,7 @@
                         {data: 'profile_image', name: 'profile_image'},
                         {data: 'name', name: 'name'},
                         {data: 'email', name: 'email'},
-                        {data: 'mobile_number', name: 'mobile_number'},
+                        // {data: 'mobile_number', name: 'mobile_number'},
                         {data: 'posts_count', name: 'posts_count'},
                         {data: 'status_value', name: 'status_value'},
                         {data: 'action', name: 'action', orderable: false, searchable: false},

@@ -44,7 +44,7 @@
 <!--begin::Header Mobile-->
 <div id="kt_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
     <!--begin::Logo-->
-    <a href="index.html">
+    <a href="{{ route('myCompany.dashboard') }}">
         <img alt="Logo" src="{{ asset('Backend/img/logo.png')}}" height="30"/>
     </a>
     <!--end::Logo-->
@@ -91,7 +91,7 @@
             <!--begin::Brand-->
             <div class="brand flex-column-auto" id="kt_brand">
                 <!--begin::Logo-->
-                <a href="index.html" class="brand-logo">
+                <a href="{{ route('myCompany.dashboard') }}" class="brand-logo">
                     <img alt="Logo" width="75px" height="45px" src="{{ asset('Backend/img/logo.png')}}"/>
                 </a>
                 <!--end::Logo-->
@@ -126,82 +126,30 @@
                     <ul class="menu-nav">
 
 
-                        <li class="menu-item {{ Request::routeIs('dashboard.index') ? 'menu-item-active' : ''}}" aria-haspopup="true">
-                            <a href="{{ route('dashboard.index') }}" class="menu-link">
+                        <li class="menu-item {{ Request::routeIs('myCompany.dashboard') ? 'menu-item-active' : ''}}" aria-haspopup="true">
+                            <a href="{{ route('myCompany.dashboard') }}" class="menu-link">
 									<span class="svg-icon menu-icon"><i class="fa fa-tachometer-alt"></i></span>
                                 <span class="menu-text">{{ t('Dashboard') }}</span>
                             </a>
                         </li>
 
 
-
-                        <li class="menu-item {{ Request::routeIs('manager.index') ? 'menu-item-active' : ''}}" aria-haspopup="true">
-                            <a href="{{ route('manager.index') }}" class="menu-link">
-									<span class="svg-icon menu-icon"><i class="fa fa-user-shield"></i></span>
-                                <span class="menu-text">{{ t('Managers') }}</span>
-                            </a>
-                        </li>
-
-
-                        <li class="menu-item {{ Request::routeIs('degree.index') ? 'menu-item-active' : ''}}" aria-haspopup="true">
-                            <a href="{{ route('degree.index') }}" class="menu-link">
-									<span class="svg-icon menu-icon"><i class="fa fa-graduation-cap"></i></span>
-                                <span class="menu-text">{{ t('Degrees') }}</span>
-                            </a>
-                        </li>
-
-                        <li class="menu-item {{ Request::routeIs('specialize.index') ? 'menu-item-active' : ''}}" aria-haspopup="true">
-                            <a href="{{ route('specialize.index') }}" class="menu-link">
-									<span class="svg-icon menu-icon"><i class="fa fa-thumbtack"></i></span>
-                                <span class="menu-text">{{ t('Specializes') }}</span>
-                            </a>
-                        </li>
-
-                        <li class="menu-item {{ Request::routeIs('university.index') ? 'menu-item-active' : ''}}" aria-haspopup="true">
-                            <a href="{{ route('university.index') }}" class="menu-link">
-									<span class="svg-icon menu-icon"><i class="fa fa-university"></i></span>
-                                <span class="menu-text">{{ t('Universities') }}</span>
-                            </a>
-                        </li>
-
-
-
-                        <li class="menu-item {{ Request::routeIs('skill.index') ? 'menu-item-active' : ''}}" aria-haspopup="true">
-                            <a href="{{ route('skill.index') }}" class="menu-link">
-									<span class="svg-icon menu-icon"><i class="fa fa-tags"></i></span>
-                                <span class="menu-text">{{ t('Skills') }}</span>
-                            </a>
-                        </li>
-
-
-                        <li class="menu-item {{ Request::routeIs('user.index') ? 'menu-item-active' : ''}}" aria-haspopup="true">
-                            <a href="{{ route('user.index') }}" class="menu-link">
-									<span class="svg-icon menu-icon"><i class="fa fa-users"></i></span>
-                                <span class="menu-text">{{ t('Users') }}</span>
-                            </a>
-                        </li>
-
-
-                        <li class="menu-item {{ Request::routeIs('company.index') ? 'menu-item-active' : ''}}" aria-haspopup="true">
-                            <a href="{{ route('company.index') }}" class="menu-link">
-									<span class="svg-icon menu-icon"><i class="fa fa-building"></i></span>
-                                <span class="menu-text">{{ t('Companies') }}</span>
-                            </a>
-                        </li>
-
-                        <li class="menu-item {{ Request::routeIs('post.index') ? 'menu-item-active' : ''}}" aria-haspopup="true">
-                            <a href="{{ route('post.index') }}" class="menu-link">
+                        <li class="menu-item {{ Request::routeIs('myCompany.post.index') ? 'menu-item-active' : ''}}" aria-haspopup="true">
+                            <a href="{{ route('myCompany.post.index') }}" class="menu-link">
 									<span class="svg-icon menu-icon"><i class="fa fa-paper-plane"></i></span>
                                 <span class="menu-text">{{ t('Posts') }}</span>
                             </a>
                         </li>
 
-                        <li class="menu-item {{ Request::routeIs('applicant.index') ? 'menu-item-active' : ''}}" aria-haspopup="true">
-                            <a href="{{ route('applicant.index') }}" class="menu-link">
+                        <li class="menu-item {{ Request::routeIs('myCompany.applicant.index') ? 'menu-item-active' : ''}}" aria-haspopup="true">
+                            <a href="{{ route('myCompany.applicant.index') }}" class="menu-link">
 									<span class="svg-icon menu-icon"><i class="fa fa-cart-arrow-down"></i></span>
                                 <span class="menu-text">{{ t('Applicants') }}</span>
                             </a>
                         </li>
+
+
+
 
 
 
@@ -275,10 +223,10 @@
                                 class="btn btn-icon btn-icon-mobile w-auto btn-clean d-flex align-items-center btn-lg px-2"
                                 id="kt_quick_user_toggle">
                                 <span
-                                    class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3">{{ Auth::guard('manager')->user()->name }}</span>
+                                    class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3">{{ Auth::guard('company')->user()->name }}</span>
                                 <span class="symbol symbol-lg-35 symbol-25 symbol-light-primary">
 										<span
-                                         class="symbol-label font-size-h5 font-weight-bold">{{ substr(Auth::guard('manager')->user()->name,0,1) }}</span>
+                                         class="symbol-label font-size-h5 font-weight-bold">{{ substr(Auth::guard('company')->user()->name,0,1) }}</span>
 									</span>
                             </div>
                         </div>
@@ -322,11 +270,11 @@
         <div class="d-flex align-items-center mt-5">
             <div class="symbol symbol-100 mr-5">
                 <div class="symbol-label"
-                     style="background-image:url('{{ asset('Backend/media/users/300_23.jpg')}}')"></div>
+                     style="background-image:url('{{ Auth::guard('company')->user()->profile_image}}')"></div>
                 <i class="symbol-badge bg-success"></i>
             </div>
             <div class="d-flex flex-column">
-                <a href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">{{ Auth::guard('manager')->user()->name }}</a>
+                <a href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">{{ Auth::guard('company')->user()->name }}</a>
                 <div class="navi mt-2">
                     <a href="#" class="navi-item">
 							<span class="navi-link p-0 pb-2">
@@ -346,10 +294,10 @@
                                         <!--end::Svg Icon-->
 									</span>
 								</span>
-								<span class="navi-text text-muted text-hover-primary">{{ Auth::guard('manager')->user()->email }}</span>
+								<span class="navi-text text-muted text-hover-primary">{{ Auth::guard('company')->user()->email }}</span>
 							</span>
                     </a>
-                    <form method="POST" action="{{ route('logout') }}">
+                    <form method="POST" action="{{ route('logoutCompany') }}">
                         @csrf
                         <button type="submit" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">{{ t('Sign Out') }}</button>
                     </form>
@@ -363,7 +311,7 @@
         <!--begin::Nav-->
         <div class="navi navi-spacer-x-0 p-0">
             <!--begin::Item-->
-            <a href="{{ route('profile') }}" class="navi-item">
+            <a href="{{ route('myCompany.profile') }}" class="navi-item">
                 <div class="navi-link">
                     <div class="symbol symbol-40 bg-light mr-3">
                         <div class="symbol-label">

@@ -73,10 +73,10 @@ class CompanyController extends Controller
                         <i class='fa fa-edit'></i>
                     </a> ";
 
-                $btn .= "<button data-toggle='tooltip' data-placement='top' data-original-title='حذف'
-                        type='button' name='delete' id='$row->id'
-                        class='delete  btn btn-outline-primary btn-sm  btn-icon btn-icon-sm'>
-                        <i class='fa fa-trash-alt'></button>";
+                // $btn .= "<button data-toggle='tooltip' data-placement='top' data-original-title='حذف'
+                //         type='button' name='delete' id='$row->id'
+                //         class='delete  btn btn-outline-primary btn-sm  btn-icon btn-icon-sm'>
+                //         <i class='fa fa-trash-alt'></button>";
 
 
                 return $btn;
@@ -190,10 +190,14 @@ class CompanyController extends Controller
             $data['banner_image'] = $this->uploadImage($request->banner_image, 'company_image');
         }
         $data['status'] = $request->get('status', 0);
-
         $company->update($data);
 
-        $company->link->update($data);
+        if ($company->link) {
+            $company->link->update($data);
+        } else {
+            $data['company_id'] = $company->id;
+            CompanyLink::create($data);
+        }
 
         Toastr::success(t('Success To Update Data'));
         return redirect()->route('company.index');

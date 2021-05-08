@@ -16,9 +16,9 @@ class DatabaseSeeder extends Seeder
         $this->call(SkillSeed::class);
         $this->call(UniversitySeed::class);
         $this->call(SpecializeSeed::class);
-        $this->call(UserSeed::class);
         $this->call(CompanySeed::class);
         $this->call(PostSeed::class);
+        $this->call(UserSeed::class);
         $this->call(ApplicantSeeder::class);
     }
 }

@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Applicant::class, function (Faker $faker) {
     return [
-        'user_id' => $faker->numberBetween(1, 4),
+        'user_id' => 1,
         'post_id' => $faker->numberBetween(4, 8),
         'notes' => $faker->paragraph,
         'status' => 'review',

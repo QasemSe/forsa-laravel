@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(Post::class, function (Faker $faker) {
     return [
         'title' => $faker->sentence,
-        'company_id' => $faker->numberBetween(1, 10),
+        'company_id' => 1,
         'description' => $faker->paragraph,
         'status' => $faker->numberBetween(0, 1),
         'expire_date' => $faker->dateTimeThisYear(),
