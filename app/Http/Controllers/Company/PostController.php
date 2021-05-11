@@ -59,19 +59,19 @@ class PostController extends Controller
                 $btn = '';
 
 
-                $btn .= "<a data-toggle='tooltip' data-placement='top' data-original-title='تعديل'
+                $btn .= "<a data-toggle='tooltip' data-placement='top' data-original-title='" . t('Show Applicant') . "'
                         href=" . route('myCompany.post.show', $row->id) . "
                         class=' btn btn-outline-primary btn-sm  btn-icon btn-icon-sm'>
                         <i class='fa fa-eye'></i>
                     </a> ";
 
-                $btn .= "<a data-toggle='tooltip' data-placement='top' data-original-title='تعديل'
+                $btn .= "<a data-toggle='tooltip' data-placement='top' data-original-title='" . t('Edit') . "'
                         href=" . route('myCompany.post.edit', $row->id) . "
                         class=' btn btn-outline-primary btn-sm  btn-icon btn-icon-sm'>
                         <i class='fa fa-edit'></i>
                     </a> ";
 
-                $btn .= "<button data-toggle='tooltip' data-placement='top' data-original-title='حذف'
+                $btn .= "<button data-toggle='tooltip' data-placement='top' data-original-title='" . t('Delete') . "'
                         type='button' name='delete' id='$row->id'
                         class='delete  btn btn-outline-primary btn-sm  btn-icon btn-icon-sm'>
                         <i class='fa fa-trash-alt'></button>";
@@ -152,7 +152,7 @@ class PostController extends Controller
         }
         $companies = Company::all();
         $skills = Skill::all();
-        $this->validationRules["expire_date"] = 'required|date_format:Y-m-d';
+        $this->validationRules["expire_date"] = 'required|date_format:Y-m-d|after_or_equal:' . date('Y-m-d');
         $validator = JsValidator::make($this->validationRules, $this->validationMessages);
         return view("Company.post.edit")
             ->with('validator', $validator)
@@ -175,7 +175,7 @@ class PostController extends Controller
             Toastr::error(t("Not Found"));
             return redirect()->route('myCompany.post.index');
         }
-        $this->validationRules["expire_date"] = 'required|date_format:Y-m-d';
+        $this->validationRules["expire_date"] = 'required|date_format:Y-m-d|after_or_equal:' . date('Y-m-d');
         $request->validate($this->validationRules);
 
         $data = $request->all();

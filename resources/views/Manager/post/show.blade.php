@@ -29,11 +29,11 @@
                     <!--begin: Items-->
                     <div class="d-flex align-items-center flex-wrap">
                         <div class="flex-grow-1 font-weight-bold text-dark-50 py-5 py-lg-2 mr-5">{{ $post->description }}</div>
-                        <br>
-                        @foreach ($post->skills as $skill)
-                            <div class="badge badge-dark mt-4">{{ $skill->name }}</div>
-                        @endforeach
                     </div>
+
+                    @foreach ($post->skills as $skill)
+                        <div class="badge badge-dark mt-4">{{ $skill->name }}</div>
+                    @endforeach
                     <!--begin: Items-->
                 </div>
 
@@ -94,7 +94,7 @@
                                                                 </span>
                                                             </div>
                                                             <div>
-                                                                <a href="#" class="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">{{ $applicant->user->name }}</a>
+                                                                <a href="{{ route('applicant.show',$applicant->id) }}" class="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">{{ $applicant->user->name }}</a>
                                                             </div>
                                                         </div>
                                                     </td>
@@ -122,6 +122,12 @@
 
                                                     </td>
                                                 </tr>
+                                            @else
+                                            <tr>
+                                               <td>
+                                                   <h6 class="text-danger">{{ t('The user not found') }}</h6>
+                                                </td>
+                                            </tr>
                                             @endif
 
                                         @endforeach

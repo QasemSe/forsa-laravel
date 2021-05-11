@@ -140,7 +140,7 @@
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary mr-2">{{ t('Submit') }}</button>
-                        <a href="{{ route('company.index') }}">
+                        <a href="{{ route('myCompany.dashboard') }}">
                             <button type="button" class="btn btn-secondary">{{ t('Cancle') }}</button>
                         </a>
                     </div>

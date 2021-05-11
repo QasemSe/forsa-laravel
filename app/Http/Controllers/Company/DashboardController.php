@@ -49,9 +49,9 @@ class DashboardController extends Controller
         $this->validationRules["profile_image"] = 'nullable|image';
         $this->validationRules["banner_image"] = 'nullable|image';
         $this->validationRules["mobile_number"] = 'required|numeric';
-        $this->validationRules["address"] = 'nullable';
-        $this->validationRules["state"] = 'nullable';
-        $this->validationRules["description"] = 'nullable';
+        $this->validationRules["address"] = 'required';
+        $this->validationRules["state"] = 'required';
+        $this->validationRules["description"] = 'required';
 
         $validator = JsValidator::make($this->validationRules, $this->validationMessages);
         return view('Company.profile.profile')
@@ -68,9 +68,9 @@ class DashboardController extends Controller
         $this->validationRules["profile_image"] = 'nullable|image';
         $this->validationRules["banner_image"] = 'nullable|image';
         $this->validationRules["mobile_number"] = 'required|numeric';
-        $this->validationRules["address"] = 'nullable';
-        $this->validationRules["state"] = 'nullable';
-        $this->validationRules["description"] = 'nullable';
+        $this->validationRules["address"] = 'required';
+        $this->validationRules["state"] = 'required';
+        $this->validationRules["description"] = 'required';
 
         $request->validate($this->validationRules);
 
@@ -94,6 +94,6 @@ class DashboardController extends Controller
         }
 
         Toastr::success(t('Success To Update Data'));
-        return redirect()->route('myCompany.profile');
+        return redirect()->back();
     }
 }

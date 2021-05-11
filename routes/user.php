@@ -46,6 +46,9 @@ Route::group(
                 Route::get('applicants', 'ApplicantController@index')->name('me.applicant.index');
                 Route::get('applicant/getApplicantData', 'ApplicantController@getApplicantData')->name('me.applicant.getApplicantData');
                 Route::get('applicant/show/{id}', 'ApplicantController@show')->name('me.applicant.show');
+
+                Route::get('posts', 'PostController@index')->name('me.post.index');
+                Route::get('post/search', 'PostController@search')->name('me.post.search');
             }
         );
     }

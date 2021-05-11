@@ -7,7 +7,7 @@
                 <div class="card card-custom">
                     <div class="card-header">
                         <h3 class="card-title">
-                           <a href="{{ route('company.index') }}">{{ t('Companies') }}</a> /  {{ t('Add New Compay') }}
+                           {{ t('Applicants') }}
                         </h3>
                         <div class="card-toolbar">
                             <div class="example-tools justify-content-center">
@@ -58,7 +58,7 @@
                         </div>
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary mr-2">{{ t('Submit') }}</button>
-                            <a href="{{ route('company.index') }}">
+                            <a href="{{ route('myCompany.applicant.index') }}">
                                 <button type="button" class="btn btn-secondary">{{ t('Cancle') }}</button>
                             </a>
                         </div>

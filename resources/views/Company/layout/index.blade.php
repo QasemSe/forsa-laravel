@@ -417,6 +417,13 @@
             $('.select2').select2();
         });
 </script>
+<script>
+    $('table').on('draw.dt', function() {
+        $('[data-toggle="tooltip"]').tooltip({
+             trigger: "hover"
+        });
+    })
+</script>
 @if (app()->getlocale() =="ar")
     <script>
         toastr.options = {

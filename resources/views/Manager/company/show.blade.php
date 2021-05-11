@@ -61,7 +61,7 @@
                         <div class="d-flex align-items-center flex-wrap">
                             <!--begin: Item-->
                             <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
-                                <a href="{{ $company->link ?  $company->link->website_url  : asset('')}}">
+                                <a target="_blanck" href="{{ $company->link ?  $company->link->website_url  : asset('')}}">
                                     <span class="mr-4">
                                         <i class="fa fa-globe-americas fa-3x text-success"></i>
                                     </span>
@@ -69,7 +69,7 @@
                             </div>
 
                             <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
-                                <a href="{{ $company->link ?  $company->link->facebook_url  : asset('')}}">
+                                <a target="_blanck" href="{{ $company->link ?  $company->link->facebook_url  : asset('')}}">
                                     <span class="mr-4">
                                         <i class="fab fa-facebook fa-3x text-success"></i>
                                     </span>
@@ -77,35 +77,35 @@
                             </div>
 
                             <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
-                                <a href="{{ $company->link ?  $company->link->twitter_url  : asset('')}}">
+                                <a target="_blanck" href="{{ $company->link ?  $company->link->twitter_url  : asset('')}}">
                                     <span class="mr-4">
                                         <i class="fab fa-twitter-square fa-3x text-success"></i>
                                     </span>
                                 </a>
                             </div>
                             <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
-                                <a href="{{ $company->link ?  $company->link->instagram_url  : asset('')}}">
+                                <a target="_blanck" href="{{ $company->link ?  $company->link->instagram_url  : asset('')}}">
                                     <span class="mr-4">
                                         <i class="fab fa-instagram-square fa-3x text-success"></i>
                                     </span>
                                 </a>
                             </div>
                             <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
-                                <a href="{{ $company->link ?  $company->link->whatsapp_url  : asset('')}}">
+                                <a target="_blanck" href="{{ $company->link ?  $company->link->whatsapp_url  : asset('')}}">
                                     <span class="mr-4">
                                         <i class="fab fa-whatsapp-square fa-3x text-success"></i>
                                     </span>
                                 </a>
                             </div>
                             <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
-                                <a href="{{ $company->link ?  $company->link->linkedin_url  : asset('')}}">
+                                <a target="_blanck" href="{{ $company->link ?  $company->link->linkedin_url  : asset('')}}">
                                     <span class="mr-4">
                                         <i class="fab fa-linkedin fa-3x text-success"></i>
                                     </span>
                                 </a>
                             </div>
                             <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
-                                <a href="{{ $company->link ?  $company->link->behance_url  : asset('')}}">
+                                <a target="_blanck" href="{{ $company->link ?  $company->link->behance_url  : asset('')}}">
                                     <span class="mr-4">
                                         <i class="fab fa-behance-square fa-3x text-success"></i>
                                     </span>
@@ -121,59 +121,63 @@
                 </div>
 
 
+                <div class="row">
+                    @foreach ($posts as $company_post)
+                        @if ($posts && $posts->count() > 0)
+                            <div class="col-md-6">
+                                <div class="accordion accordion-solid accordion-panel accordion-svg-toggle mb-10" >
+                                    <div class="card p-6">
+                                        <!--begin::Header-->
+                                        <div class="card-header " id="faqHeading{{ $company_post->id }}">
+                                            <div class="card-title font-size-h4 text-dark" data-toggle="collapse"
+                                                    data-target="#faq{{ $company_post->id }}" aria-expanded="false" aria-controls="faq{{ $company_post->id }}" role="button">
+                                                <div class="card-label">{{ $company_post->title }}</div>
+                                                <span class="mr-4">
+                                                    {!! $company_post->status_value !!}
+                                                </span>
+                                                <span class='badge badge-secondary mr-4'>{{ $company_post->expire_date->format('Y-m-d') }}</span>
 
-                <div class="accordion accordion-solid accordion-panel accordion-svg-toggle mb-10" id="faq">
-                    <!--begin::Item-->
-                    @if ($company->posts && $company->posts->count() > 0)
-                        @foreach ($company->posts as $company_post)
-                        <div class="card p-6">
-                            <!--begin::Header-->
-                            <div class="card-header" id="faqHeading{{ $company_post->id }}">
-                                <div class="card-title font-size-h4 text-dark" data-toggle="collapse" data-target="#faq{{ $company_post->id }}" aria-expanded="true" aria-controls="faq1" role="button">
-                                    <div class="card-label">{{ $company_post->title }}</div>
-                                    <span class="mr-4">
-                                        {!! $company_post->status_value !!}
-                                    </span>
-                                    <span class='badge badge-danger mr-4'>{{ $company_post->expire_date->format('Y-m-d') }}</span>
+                                                <span class="svg-icon svg-icon-primary">
+                                                    <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Angle-double-right.svg-->
+                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                            <polygon points="0 0 24 0 24 24 0 24"></polygon>
+                                                            <path d="M12.2928955,6.70710318 C11.9023712,6.31657888 11.9023712,5.68341391 12.2928955,5.29288961 C12.6834198,4.90236532 13.3165848,4.90236532 13.7071091,5.29288961 L19.7071091,11.2928896 C20.085688,11.6714686 20.0989336,12.281055 19.7371564,12.675721 L14.2371564,18.675721 C13.863964,19.08284 13.2313966,19.1103429 12.8242777,18.7371505 C12.4171587,18.3639581 12.3896557,17.7313908 12.7628481,17.3242718 L17.6158645,12.0300721 L12.2928955,6.70710318 Z" fill="#000000" fill-rule="nonzero"></path>
+                                                            <path d="M3.70710678,15.7071068 C3.31658249,16.0976311 2.68341751,16.0976311 2.29289322,15.7071068 C1.90236893,15.3165825 1.90236893,14.6834175 2.29289322,14.2928932 L8.29289322,8.29289322 C8.67147216,7.91431428 9.28105859,7.90106866 9.67572463,8.26284586 L15.6757246,13.7628459 C16.0828436,14.1360383 16.1103465,14.7686056 15.7371541,15.1757246 C15.3639617,15.5828436 14.7313944,15.6103465 14.3242754,15.2371541 L9.03007575,10.3841378 L3.70710678,15.7071068 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" transform="translate(9.000003, 11.999999) rotate(-270.000000) translate(-9.000003, -11.999999)"></path>
+                                                        </g>
+                                                    </svg>
+                                                    <!--end::Svg Icon-->
+                                                </span>
 
-                                    <span class="svg-icon svg-icon-primary">
-                                        <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Angle-double-right.svg-->
-                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <polygon points="0 0 24 0 24 24 0 24"></polygon>
-                                                <path d="M12.2928955,6.70710318 C11.9023712,6.31657888 11.9023712,5.68341391 12.2928955,5.29288961 C12.6834198,4.90236532 13.3165848,4.90236532 13.7071091,5.29288961 L19.7071091,11.2928896 C20.085688,11.6714686 20.0989336,12.281055 19.7371564,12.675721 L14.2371564,18.675721 C13.863964,19.08284 13.2313966,19.1103429 12.8242777,18.7371505 C12.4171587,18.3639581 12.3896557,17.7313908 12.7628481,17.3242718 L17.6158645,12.0300721 L12.2928955,6.70710318 Z" fill="#000000" fill-rule="nonzero"></path>
-                                                <path d="M3.70710678,15.7071068 C3.31658249,16.0976311 2.68341751,16.0976311 2.29289322,15.7071068 C1.90236893,15.3165825 1.90236893,14.6834175 2.29289322,14.2928932 L8.29289322,8.29289322 C8.67147216,7.91431428 9.28105859,7.90106866 9.67572463,8.26284586 L15.6757246,13.7628459 C16.0828436,14.1360383 16.1103465,14.7686056 15.7371541,15.1757246 C15.3639617,15.5828436 14.7313944,15.6103465 14.3242754,15.2371541 L9.03007575,10.3841378 L3.70710678,15.7071068 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" transform="translate(9.000003, 11.999999) rotate(-270.000000) translate(-9.000003, -11.999999)"></path>
-                                            </g>
-                                        </svg>
-                                        <!--end::Svg Icon-->
-                                    </span>
+                                            </div>
+                                        </div>
+                                        <!--end::Header-->
+                                        <!--begin::Body-->
+                                        <div id="faq{{ $company_post->id }}" class="collapse"  aria-labelledby="faqHeading{{ $company_post->id }}" data-parent="#faq{{ $company_post->id }}" style="">
+                                            <div class="card-body pt-3 font-size-h6 font-weight-normal text-dark-50">
+                                                {!! $company_post->description !!}
+                                                <br><br>
+                                                @foreach ($company_post->skills as $post_skill)
+                                                    <div class="badge badge-dark mt-3">{{ $post_skill->name }}</div>
+                                                @endforeach
+                                            </div>
 
+                                        </div>
+                                        <!--end::Body-->
+                                    </div>
                                 </div>
                             </div>
-                            <!--end::Header-->
-                            <!--begin::Body-->
-                            <div id="faq{{ $company_post->id }}" class="collapse " aria-labelledby="faqHeading{{ $company_post->id }}" data-parent="#faq" style="">
-                                <div class="card-body pt-3 font-size-h6 font-weight-normal text-dark-50">
-                                    {{ $company_post->description }}
-                                    <br><br>
-                                    @foreach ($company_post->skills as $post_skill)
-                                        <div class="badge badge-dark">{{ $post_skill->name }}</div>
-                                    @endforeach
+                        @else
+                            <div class="col-md-6">
+                                <div class="alert alert-danger" role="alert">
+                                    {{ t('No New Posts') }}
                                 </div>
-
                             </div>
-                            <!--end::Body-->
-                        </div>
-                        @endforeach
-                    @else
-                            <div class="alert alert-danger" role="alert">
-                                {{ t('No New Posts') }}
-                            </div>
-
-                    @endif
-
+                        @endif
+                    @endforeach
 
                 </div>
+
 
         </div>
         <!--end::Container-->

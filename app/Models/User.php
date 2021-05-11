@@ -25,7 +25,8 @@ class User extends Authenticatable
         'avarage',
         'specialize_id',
         'degree_id',
-        'university_id'
+        'university_id',
+        'status'
     ];
 
     protected $appends  = ['degree_name', 'specialize_name', 'university_name'];
@@ -100,6 +101,18 @@ class User extends Authenticatable
     }
 
 
+
+    public function getStatusValueAttribute()
+    {
+        switch ($this->status) {
+            case '1':
+                return  "<span class='badge badge-success'>" . t("Active") . "</span>";
+            case '0':
+                return  "<span class='badge badge-danger'>" . t("inactive") . "</span>";
+            default:
+                '';
+        }
+    }
 
 
 

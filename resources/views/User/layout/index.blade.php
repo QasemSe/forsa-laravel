@@ -134,6 +134,14 @@
                         </li>
 
 
+                        <li class="menu-item {{ Request::routeIs('me.post.index') ? 'menu-item-active' : ''}}" aria-haspopup="true">
+                            <a href="{{ route('me.post.index') }}" class="menu-link">
+									<span class="svg-icon menu-icon"><i class="fa fa-paper-plane"></i></span>
+                                <span class="menu-text">{{ t('Home Page') }}</span>
+                            </a>
+                        </li>
+
+
 
 
                         <li class="menu-item {{ Request::routeIs('me.applicant.index') ? 'menu-item-active' : ''}}" aria-haspopup="true">
@@ -411,6 +419,13 @@
      $(document).ready(function () {
             $('.select2').select2();
         });
+</script>
+<script>
+    $('table').on('draw.dt', function() {
+        $('[data-toggle="tooltip"]').tooltip({
+             trigger: "hover"
+        });
+    })
 </script>
 @if (app()->getlocale() =="ar")
     <script>

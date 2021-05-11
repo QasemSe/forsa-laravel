@@ -23,13 +23,13 @@
                         <div class="card-body">
 
                             <div class="row">
-                                <div class="col-lg-4 ">
+                                <div class="col-md-8 ">
                                     <div class="form-group">
                                         <label>{{ t('Title') }} </label>
                                         <input  value="{{ old('title') }}"  name="title" type="text" class="form-control" />
                                     </div>
                                 </div>
-                                <div class="col-lg-4 ">
+                                <div class="col-md-4 ">
                                     <div class="form-group">
                                         <label>{{ t('Expire Date') }} </label>
                                         <input  value="{{ old('expire_date') }}"  name="expire_date" type="text" class="form-control datetimepicker1" />

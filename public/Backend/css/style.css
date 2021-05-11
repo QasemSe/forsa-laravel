@@ -5,3 +5,15 @@
 #imageUpload-error {
     display: inherit;
 }
+
+#imageUpload2-error {
+    display: inherit;
+}
+
+
+.tooltip-inner {
+    background-color: #fff;
+    color: #2a2e47;
+    font-size: 13px;
+    font-weight: bold;
+}

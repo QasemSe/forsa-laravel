@@ -140,7 +140,7 @@ return [
         'company_id' => 'الشركة',
         'password_confirmation' => 'تأكيد كلمة المرور',
         'profile_image' => 'الصورة',
-
+        'banner_image' => 'صورة بانر',
 
 
 

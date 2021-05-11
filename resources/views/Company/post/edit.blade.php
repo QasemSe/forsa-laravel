@@ -23,13 +23,13 @@
                         <div class="card-body">
 
                             <div class="row">
-                                <div class="col-lg-4 ">
+                                <div class="col-md-8 ">
                                     <div class="form-group">
                                         <label>{{ t('Title') }} </label>
                                         <input  value="{{$post->title }}"  name="title" type="text" class="form-control" />
                                     </div>
                                 </div>
-                                <div class="col-lg-4 ">
+                                <div class="col-md-4 ">
                                     <div class="form-group">
                                         <label>{{ t('Expire Date') }} </label>
                                         <input  value="{{$post->expire_date->format('Y-m-d') }}"  name="expire_date" type="text" class="form-control datetimepicker1" />

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Manager;
 use App\Http\Controllers\Controller;
 use App\Models\CompanyLink;
 use App\Models\Company;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 use Proengsoft\JsValidation\Facades\JsValidatorFacade as JsValidator;
@@ -134,7 +135,9 @@ class CompanyController extends Controller
             Toastr::error(t("Not Found"));
             return redirect()->route('company.index');
         }
+        $posts = Post::where('company_id', $company->id)->orderBy('created_at', 'desc')->get();
         return view("Manager.company.show")
+            ->with('posts', $posts)
             ->with('company', $company);
     }
 

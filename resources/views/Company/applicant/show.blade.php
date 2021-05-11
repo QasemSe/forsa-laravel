@@ -84,28 +84,19 @@
                                 </ul>
                             </div>
                         </div>
-                        <hr>
-
-                        @if ($applicant->post->company)
+                        <hr> 
+                        @if ($applicant->post && $applicant->post->company)
                             <div class="card-body">
                                 <h4 class="text-primary">{{ t('Company Detail') }}</h4>
                                 <br>
-                                <!--begin::Section-->
                                 <div class="d-flex align-items-center">
-                                    <!--begin::Pic-->
                                     <div class="flex-shrink-0 mr-4 symbol symbol-65 symbol-circle">
                                         <img src="{{ $applicant->post->company->profile_image }}" alt="image">
                                     </div>
-                                    <!--end::Pic-->
-                                    <!--begin::Info-->
                                     <div class="d-flex flex-column mr-auto">
-                                        <!--begin: Title-->
-                                        <a href="{{ route('company.show',$applicant->post->company->id) }}" class="card-title text-hover-primary font-weight-bolder font-size-h5 text-dark mb-1">{{ $applicant->company_name }}</a>
-                                        <!--end::Title-->
+                                        <a  class="card-title text-hover-primary font-weight-bolder font-size-h5 text-dark mb-1">{{ $applicant->company_name }}</a>
                                     </div>
                                 </div>
-                                <!--end::Section-->
-                                <!--begin::Content-->
                                 <div class="d-flex flex-wrap mt-14">
                                     <a href="#" class="text-muted text-hover-primary font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
                                         <i class="fa fa-envelope"> </i>
@@ -126,7 +117,6 @@
                         <hr>
                         <div class="card-body">
                             <h4 class="text-primary">{{ t('Details') }}</h4>
-
                             <br>
                             {{ $applicant->notes }}
                         </div>

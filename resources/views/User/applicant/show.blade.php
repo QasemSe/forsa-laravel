@@ -92,6 +92,7 @@
                                     <span  class="badge badge-secondary">{{ $applicant->post->expire_date->format('Y-m-d') }}</span>
                                 </div>
                                 <div class="mt-4">
+
                                     @if ($applicant->post->skills && $applicant->post->skills->count() > 0 )
                                         @foreach ($applicant->post->skills as $post_skill)
                                             <span class="badge badge-dark mt-4">{{ $post_skill->name }}</span>
