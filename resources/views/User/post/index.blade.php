@@ -50,8 +50,13 @@
                         <hr>
                         <div class="card-body pt-0 pb-3 m-4">
                             <div class="mt-4 text-right">
-                                <button class="btn btn-secondary mr-2">{{ t('More Details') }}</button>
-                                <button class="btn btn-primary">{{ t('Apply Now') }}</button>
+                               <a href="{{ route('me.post.show',$post->id) }}">
+                                    <button class="btn btn-secondary mr-2">{{ t('More Details') }}</button>
+                                </a>
+                               <a href="{{ route('me.post.show',$post->id) }}">
+                                    <button class="btn btn-primary">{{ t('Apply Now') }}</button>
+                                </a>
+
                             </div>
                         </div>
                     </div>

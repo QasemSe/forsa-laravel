@@ -78,7 +78,14 @@ class ApplicantController extends Controller
             Toastr::error(t("Not Found"));
             return redirect()->route('myCompany.applicant.index');
         }
+        // to get companies user work in it
+        $applicants_users = Applicant::whereHas('post', function ($query) {
+            $query->where('company_id', '!=', Auth::guard('company')->user()->id);
+        })->where('status', 1)->where('user_id', $applicant->user_id)->get();
+
+
         return view("Company.applicant.show")
+            ->with('applicants_users', $applicants_users)
             ->with('applicant', $applicant);
     }
 

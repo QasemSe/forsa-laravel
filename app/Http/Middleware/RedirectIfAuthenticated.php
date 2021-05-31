@@ -30,7 +30,7 @@ class RedirectIfAuthenticated
 
 
         if ($guard == "web" && Auth::check()) {
-            return redirect()->route('me.dashboard');
+            return redirect()->route('me.post.index');
         }
 
 

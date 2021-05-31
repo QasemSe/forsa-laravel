@@ -141,7 +141,7 @@ return [
         'password_confirmation' => 'تأكيد كلمة المرور',
         'profile_image' => 'الصورة',
         'banner_image' => 'صورة بانر',
-
+        'notes' => 'الملاحضات',
 
 
 

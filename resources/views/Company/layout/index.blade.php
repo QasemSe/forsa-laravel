@@ -129,7 +129,7 @@
                         <li class="menu-item {{ Request::routeIs('myCompany.dashboard') ? 'menu-item-active' : ''}}" aria-haspopup="true">
                             <a href="{{ route('myCompany.dashboard') }}" class="menu-link">
 									<span class="svg-icon menu-icon"><i class="fa fa-tachometer-alt"></i></span>
-                                <span class="menu-text">{{ t('Dashboard') }}</span>
+                                <span class="menu-text">{{ t('Archive') }}</span>
                             </a>
                         </li>
 

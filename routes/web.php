@@ -28,8 +28,8 @@ Route::group(
 
 
         // Manager
-        Route::get('showManagerLogin', 'Auth\LoginController@showManagerLogin')->name('showManagerLogin');
-        Route::post('loginManager', 'Auth\LoginController@loginManager')->name('loginManager');
+        Route::get('manager/login', 'Auth\LoginController@showManagerLogin')->name('showManagerLogin');
+        Route::post('manager/login', 'Auth\LoginController@loginManager')->name('loginManager');
         Route::post('logoutManager', 'Auth\LoginController@logoutManager')->name('logoutManager');
 
 

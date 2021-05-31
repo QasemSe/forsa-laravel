@@ -28,6 +28,8 @@ class DashboardController extends Controller
 
     public function index()
     {
+
+
         $applicants = Applicant::orderBy('created_at', 'desc')->where('user_id', Auth::user()->id)->take(6)->get();
         $applicants_review_count = Applicant::where('user_id', Auth::user()->id)->where('status', 'review')->count();
         $applicants_accepted_count = Applicant::where('user_id', Auth::user()->id)->where('status', 'accepted')->count();

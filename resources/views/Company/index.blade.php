@@ -59,6 +59,7 @@
                                         <span class="text-dark-75">{{ t('User Details') }}</span>
                                     </th>
                                     <th style="min-width: 100px">{{ t('Post Title') }}</th>
+                                    <th style="min-width: 100px">{{ t('Applicant Date') }}</th>
                                     <th style="min-width: 100px">{{ t('Status') }}</th>
                                     <th style="min-width: 100px">{{ t('View') }}</th>
                                 </tr>
@@ -79,11 +80,14 @@
                                             </td>
                                             @if ($applicant->post)
                                                 <td>
-                                                    <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{ \Str::limit($applicant->post_title, 50) }}</span>
-                                                    <span class="text-muted font-weight-bold">{{ $applicant->post->expire_date->format('Y-m-d') }}</span>
+                                                    <a href="{{ route('myCompany.post.show',$applicant->post->id) }}">
+                                                        <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{ \Str::limit($applicant->post_title, 50) }}</span>
+                                                    </a>
                                                 </td>
                                             @endif
-
+                                            <td>
+                                                {{ $applicant->created_at->format('Y-m-d H:i') }}
+                                            </td>
                                             <td>
                                                 {!! $applicant->status_value !!}
                                             </td>

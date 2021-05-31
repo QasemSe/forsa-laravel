@@ -23,10 +23,10 @@ class UserController extends Controller
         $this->validationRules["email"] = 'required|unique:users,email';
         $this->validationRules["password"] = 'required|min:6';
         $this->validationRules["mobile_number"] = 'required|numeric';
-        $this->validationRules["avarage"] = 'nullable|numeric';
-        $this->validationRules["specialize_id"] = 'nullable|exists:specializes,id';
-        $this->validationRules["degree_id"] = 'nullable|exists:degrees,id';
-        $this->validationRules["university_id"] = 'nullable|exists:universities,id';
+        $this->validationRules["avarage"] = 'required|numeric';
+        $this->validationRules["specialize_id"] = 'required|exists:specializes,id';
+        $this->validationRules["degree_id"] = 'required|exists:degrees,id';
+        $this->validationRules["university_id"] = 'required|exists:universities,id';
         $this->validationRules["skills_id"] = 'required|min:1|exists:skills,id';
     }
 

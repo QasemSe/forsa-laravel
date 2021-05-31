@@ -129,4 +129,11 @@ return  [
     'Previous' => 'السابق',
     'Next' => 'التالي',
     'No posts found' => 'لم يتم العثور على أية منشورات',
+    'Post Detail' => 'تفاصيل المنشور',
+    'Success to Apply Post' => 'تم تقديم الطلب بنجاح',
+    'The Post is applied' => 'تم تقديم الطلب على هدا المنشور سابقا',
+    'Notes Applicant' => 'ملاحضة تقديم الطلب',
+    'Applicant Date' => 'تاريخ التقديم',
+    'Archive' => 'الأرشيف',
+    'The companies you train with' => 'الشركات التي تدرب بها',
 ];

@@ -46,6 +46,7 @@
                                         <span class="font-weight-bold mr-2">{{ t('University') }}:</span>
                                         <span class="text-muted">{{ $applicant->user->university ? $applicant->user->university->name : '' }}</span>
                                     </div>
+
                                     <hr>
                                     <div class="mt-4">
                                         <h4>{{ t('Skills') }}</h4>
@@ -55,6 +56,32 @@
                                             @endforeach
                                         @endif
                                     </div>
+                                    <hr>
+
+                                    <div class="mt-4">
+                                        <h4>{{ t('The companies you train with') }}</h4>
+                                        <br>
+                                        @if (isset($applicants_users) && $applicants_users->count() > 0)
+                                            @foreach ($applicants_users->unique('company_name') as $applicants_user)
+
+                                                @if ($applicants_user->post && $applicants_user->post->company)
+                                                    <div class="d-flex align-items-center mb-10 mt-4">
+                                                        <div class="symbol symbol-40 symbol-light-white mr-5">
+                                                            <div class="symbol-label">
+                                                                <img src="{{ $applicants_user->post->company->profile_image }}" class="h-100 align-self-end" alt="{{ $applicants_user->post->company_name }}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-flex flex-column font-weight-bold">
+                                                            <a href="{{ route('company.show',$applicants_user->post->company->id) }}" class="text-dark text-hover-primary mt-3 font-size-lg">{{ $applicants_user->post->company_name }}</a>
+                                                        </div>
+                                                    </div>
+                                                @endif
+
+                                            @endforeach
+                                        @endif
+                                    </div>
+
+
                                 </div>
                             @else
                                 <h6 class="text-danger">{{ t('The user not found') }}</h6>
@@ -88,22 +115,14 @@
                             <div class="card-body">
                                 <h4 class="text-primary">{{ t('Company Detail') }}</h4>
                                 <br>
-                                <!--begin::Section-->
                                 <div class="d-flex align-items-center">
-                                    <!--begin::Pic-->
                                     <div class="flex-shrink-0 mr-4 symbol symbol-65 symbol-circle">
                                         <img src="{{ $applicant->post->company->profile_image }}" alt="image">
                                     </div>
-                                    <!--end::Pic-->
-                                    <!--begin::Info-->
                                     <div class="d-flex flex-column mr-auto">
-                                        <!--begin: Title-->
                                         <a href="{{ route('company.show',$applicant->post->company->id) }}" class="card-title text-hover-primary font-weight-bolder font-size-h5 text-dark mb-1">{{ $applicant->company_name }}</a>
-                                        <!--end::Title-->
                                     </div>
                                 </div>
-                                <!--end::Section-->
-                                <!--begin::Content-->
                                 <div class="d-flex flex-wrap mt-14">
                                     <a href="#" class="text-muted text-hover-primary font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
                                         <i class="fa fa-envelope"> </i>
@@ -118,12 +137,30 @@
                                         {{ $applicant->post->company->address }} -  {{ $applicant->post->company->state }}
                                     </a>
                                 </div>
+                            </div>
+                        @endif
+                        <hr>
+                        @if ($applicant->post)
+                            <div class="card-body">
+                                <h4 class="text-primary">{{ t('Post Detail') }}</h4>
+                                <br>
+                                <div class="d-flex align-items-center">
 
+                                    <div class="d-flex flex-column mr-auto">
+                                        <a href="{{ route('post.show',$applicant->post->id) }}" class="card-title text-hover-primary font-weight-bolder font-size-h5 text-dark mb-1">{{ $applicant->post_title }}</a>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-wrap mt-14">
+                                    {!!  $applicant->post->description !!}
+                                </div>
+                                @foreach ($applicant->post->skills as $skill)
+                                    <div class="badge badge-dark mt-4">{{ $skill->name }}</div>
+                                @endforeach
                             </div>
                         @endif
                         <hr>
                         <div class="card-body">
-                            <h4 class="text-primary">{{ t('Details') }}</h4>
+                            <h4 class="text-primary">{{ t('Notes Applicant') }}</h4>
 
                             <br>
                             {{ $applicant->notes }}

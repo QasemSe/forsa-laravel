@@ -21,11 +21,11 @@ Route::group(
     ],
     function () {
 
+        Route::get('company/login', 'Auth\LoginController@showCompanyLogin')->name('showCompanyLogin');
+        Route::post('company/login', 'Auth\LoginController@loginCompany')->name('loginCompany');
+        Route::get('company/register', 'Auth\LoginController@showRegisterCompany')->name('showRegisterCompany');
+        Route::post('company/register', 'Auth\LoginController@registerCompany')->name('registerCompany');
         Route::post('logoutCompany', 'Auth\LoginController@logoutCompany')->name('logoutCompany');
-        Route::get('showCompanyLogin', 'Auth\LoginController@showCompanyLogin')->name('showCompanyLogin');
-        Route::post('loginCompany', 'Auth\LoginController@loginCompany')->name('loginCompany');
-        Route::get('showRegisterCompany', 'Auth\LoginController@showRegisterCompany')->name('showRegisterCompany');
-        Route::post('registerCompany', 'Auth\LoginController@registerCompany')->name('registerCompany');
 
 
 

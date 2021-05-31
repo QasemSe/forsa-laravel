@@ -85,6 +85,7 @@
                                         <th style="min-width: 100px">{{ t('Email') }}</th>
                                         <th style="min-width: 100px">{{ t('Mobile Number') }}</th>
                                         <th style="min-width: 100px">{{ t('Specialize') }}</th>
+                                        <th style="min-width: 100px">{{ t('Applicant Date') }}</th>
                                         <th style="min-width: 100px">{{ t('Details') }}</th>
                                         <th style="min-width: 200px">{{ t('Actions') }}</th>
                                     </tr>
@@ -115,6 +116,10 @@
                                                     <td>
                                                         <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{ $applicant->user->specialize_name }}</span>
                                                     </td>
+                                                    <td>
+                                                        {{ $applicant->created_at->format('Y-m-d H:i') }}
+                                                    </td>
+
                                                     <td>
                                                         <button type="button" class="btn btn-secondary btn-icon btn-sm" data-toggle="modal" data-target="#exampleModal{{ $applicant->user->id }}">
                                                             <i class="fa fa-eye"></i>

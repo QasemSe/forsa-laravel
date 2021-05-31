@@ -126,20 +126,21 @@
                     <ul class="menu-nav">
 
 
-                        <li class="menu-item {{ Request::routeIs('me.dashboard') ? 'menu-item-active' : ''}}" aria-haspopup="true">
-                            <a href="{{ route('me.dashboard') }}" class="menu-link">
-									<span class="svg-icon menu-icon"><i class="fa fa-tachometer-alt"></i></span>
-                                <span class="menu-text">{{ t('Dashboard') }}</span>
-                            </a>
-                        </li>
-
-
                         <li class="menu-item {{ Request::routeIs('me.post.index') ? 'menu-item-active' : ''}}" aria-haspopup="true">
                             <a href="{{ route('me.post.index') }}" class="menu-link">
 									<span class="svg-icon menu-icon"><i class="fa fa-paper-plane"></i></span>
                                 <span class="menu-text">{{ t('Home Page') }}</span>
                             </a>
                         </li>
+
+                        <li class="menu-item {{ Request::routeIs('me.dashboard') ? 'menu-item-active' : ''}}" aria-haspopup="true">
+                            <a href="{{ route('me.dashboard') }}" class="menu-link">
+									<span class="svg-icon menu-icon"><i class="fa fa-tachometer-alt"></i></span>
+                                <span class="menu-text">{{ t('Archive') }}</span>
+                            </a>
+                        </li>
+
+
 
 
 
@@ -300,7 +301,7 @@
 								<span class="navi-text text-muted text-hover-primary">{{ Auth::user()->email }}</span>
 							</span>
                     </a>
-                    <form method="POST" action="{{ route('logoutCompany') }}">
+                    <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <button type="submit" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">{{ t('Sign Out') }}</button>
                     </form>

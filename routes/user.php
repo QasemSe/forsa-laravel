@@ -49,6 +49,8 @@ Route::group(
 
                 Route::get('posts', 'PostController@index')->name('me.post.index');
                 Route::get('post/search', 'PostController@search')->name('me.post.search');
+                Route::get('post/show/{id}', 'PostController@show')->name('me.post.show');
+                Route::post('post/applyNow/{id}', 'PostController@applyNow')->name('me.post.applyNow');
             }
         );
     }

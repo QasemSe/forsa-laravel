@@ -131,5 +131,12 @@ return [
   'Previous' => 'Previous',  
   'Next' => 'Next',  
   'Reverse' => 'Reverse',  
-  'No posts found' => 'No posts found',
+  'No posts found' => 'No posts found',  
+  'Post Detail' => 'Post Detail',  
+  'Success to Apply Post' => 'Success to Apply Post',  
+  'The Post is applied' => 'The Post is applied',  
+  'Notes Applicant' => 'Notes Applicant',  
+  'Applicant Date' => 'Applicant Date',  
+  'Archive' => 'Archive',  
+  'The companies you train with' => 'The companies you train with',
 ];
