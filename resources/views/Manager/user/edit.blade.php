@@ -111,9 +111,52 @@
                                         @endforeach
                                     </select>
                                 </div>
-
-
-
+                            </div>
+                            <hr><br>
+                            <h5>{{ t('Links') }}</h5>
+                            <div class="row mt-4">
+                                <div class="col-lg-4 ">
+                                    <div class="form-group">
+                                        <label>{{ t('Website') }} </label>
+                                        <input  value="{{ $user->link ?  $user->link->website_url : '' }}"  name="website_url" type="text" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 ">
+                                    <div class="form-group">
+                                        <label>{{ t('Facebook') }} </label>
+                                        <input  value="{{ $user->link ? $user->link->facebook_url : '' }}"  name="facebook_url" type="text" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 ">
+                                    <div class="form-group">
+                                        <label>{{ t('Twitter') }} </label>
+                                        <input  value="{{ $user->link ? $user->link->twitter_url : ''}}"  name="twitter_url" type="text" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 ">
+                                    <div class="form-group">
+                                        <label>{{ t('Whatsapp') }} </label>
+                                        <input  value="{{ $user->link ? $user->link->whatsapp_url : '' }}"  name="whatsapp_url" type="text" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 ">
+                                    <div class="form-group">
+                                        <label>{{ t('Instagram') }} </label>
+                                        <input  value="{{ $user->link ? $user->link->instagram_url : '' }}"  name="instagram_url" type="text" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 ">
+                                    <div class="form-group">
+                                        <label>{{ t('Linkedin') }} </label>
+                                        <input  value="{{ $user->link ? $user->link->linkedin_url : '' }}"  name="linkedin_url" type="text" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 ">
+                                    <div class="form-group">
+                                        <label>{{ t('Behance') }} </label>
+                                        <input  value="{{ $user->link ? $user->link->behance_url : '' }}"  name="behance_url" type="text" class="form-control" />
+                                    </div>
+                                </div>
                             </div>
 
                         </div>

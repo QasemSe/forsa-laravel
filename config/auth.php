@@ -49,14 +49,17 @@ return [
             'provider' => 'managers',
         ],
         'company' => [
-            'driver' => 'session',
+            'driver' => 'passport',
             'provider' => 'companies',
         ],
+
         'api' => [
-            'driver' => 'token',
+            'driver' => 'passport',
             'provider' => 'users',
             'hash' => false,
         ],
+
+
     ],
 
     /*

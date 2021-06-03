@@ -104,8 +104,52 @@
                                         @endforeach
                                     </select>
                                 </div>
-
-
+                            </div>
+                            <hr><br>
+                            <h5>{{ t('Links') }}</h5>
+                            <div class="row mt-4">
+                                <div class="col-lg-4 ">
+                                    <div class="form-group">
+                                        <label>{{ t('Website') }} </label>
+                                        <input  value="{{ old('website_url') }}"  name="website_url" type="text" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 ">
+                                    <div class="form-group">
+                                        <label>{{ t('Facebook') }} </label>
+                                        <input  value="{{ old('facebook_url') }}"  name="facebook_url" type="text" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 ">
+                                    <div class="form-group">
+                                        <label>{{ t('Twitter') }} </label>
+                                        <input  value="{{ old('twitter_url') }}"  name="twitter_url" type="text" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 ">
+                                    <div class="form-group">
+                                        <label>{{ t('Whatsapp') }} </label>
+                                        <input  value="{{ old('whatsapp_url') }}"  name="whatsapp_url" type="text" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 ">
+                                    <div class="form-group">
+                                        <label>{{ t('Instagram') }} </label>
+                                        <input  value="{{ old('instagram_url') }}"  name="instagram_url" type="text" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 ">
+                                    <div class="form-group">
+                                        <label>{{ t('Linkedin') }} </label>
+                                        <input  value="{{ old('linkedin_url') }}"  name="linkedin_url" type="text" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 ">
+                                    <div class="form-group">
+                                        <label>{{ t('Behance') }} </label>
+                                        <input  value="{{ old('behance_url') }}"  name="behance_url" type="text" class="form-control" />
+                                    </div>
+                                </div>
 
                             </div>
 

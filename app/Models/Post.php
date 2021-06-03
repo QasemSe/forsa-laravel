@@ -16,7 +16,7 @@ class Post extends Model
         'expire_date',
         'status'
     ];
-    protected $appends  = ['status_value', 'company_name'];
+    protected $appends  = ['status_value', 'status_text', 'company_name'];
 
 
 
@@ -55,10 +55,22 @@ class Post extends Model
         }
     }
 
+    public function getStatusTextAttribute()
+    {
+        switch ($this->status) {
+            case '1':
+                return   t("Active");
+            case '0':
+                return  t("inactive");
+            default:
+                '';
+        }
+    }
+
     protected $casts = [
         'created_at' => 'datetime:Y-m-d H:i:s',
         'updated_at' => 'datetime:Y-m-d H:i:s',
         'deleted_at' => 'datetime:Y-m-d H:i:s',
-        'expire_date' => 'datetime:Y-m-d',
+        'expire_date' => 'date:Y-m-d',
     ];
 }

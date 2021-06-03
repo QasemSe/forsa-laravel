@@ -9,6 +9,7 @@ use App\Models\Post;
 use App\Models\Skill;
 use App\Models\Specialize;
 use App\Models\University;
+use App\Models\UserLink;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 use Proengsoft\JsValidation\Facades\JsValidatorFacade as JsValidator;
@@ -96,6 +97,12 @@ class DashboardController extends Controller
         $user->update($data);
         $user->skills()->sync($request->skills_id);
 
+        if ($user->link) {
+            $user->link->update($data);
+        } else {
+            $data['user_id'] = $user->id;
+            UserLink::create($data);
+        }
 
         Toastr::success(t('Success To Update Data'));
         return redirect()->route('me.profile');

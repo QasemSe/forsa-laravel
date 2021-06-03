@@ -8,6 +8,7 @@ use App\Models\Skill;
 use App\Models\Specialize;
 use App\Models\University;
 use App\Models\User;
+use App\Models\UserLink;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 use Proengsoft\JsValidation\Facades\JsValidatorFacade as JsValidator;
@@ -116,7 +117,8 @@ class UserController extends Controller
         $data['image'] = $request->file('image') ? $this->uploadImage($request->image, 'users_image') : 'Backend/img/default.jpg';
         $data['password'] = $request->get('password') ? bcrypt($request->get('password')) : '';
         $user  = User::create($data);
-
+        $data['user_id'] = $user->id;
+        UserLink::create($data);
 
         $user->skills()->sync($request->skills_id);
         Toastr::success(t('Success To Save Data'));
@@ -190,6 +192,14 @@ class UserController extends Controller
             $data['image'] = $this->uploadImage($request->image, 'users_image');
         }
         $user->update($data);
+        if ($user->link) {
+            $user->link->update($data);
+        } else {
+            $data['user_id'] = $user->id;
+            UserLink::create($data);
+        }
+
+
         $user->skills()->sync($request->skills_id);
 
         Toastr::success(t('Success To Update Data'));
