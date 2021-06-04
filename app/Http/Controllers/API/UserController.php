@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ApplicantsResource;
 use App\Http\Resources\UserResource;
+use App\Models\Applicant;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -36,10 +38,18 @@ class UserController extends Controller
 
     public function profile(Request $request)
     {
-
-
         $user = Auth::user();
         $user['access_token'] = Str::substr($request->header('Authorization'), 7);
         return new UserResource($user);
+    }
+
+
+    public function archive()
+    {
+        $applicants  = Applicant::where('user_id', Auth::user()->id)->paginate(5);
+        return $this->sendResponse([
+            'items' => ApplicantsResource::collection($applicants),
+            'paginate' => paginate($applicants),
+        ]);
     }
 }

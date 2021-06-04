@@ -47,6 +47,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapWebRoutes();
         $this->mapCompanyRoutes();
         $this->mapUserRoutes();
+        $this->mapComApiRoutes();
 
 
         //
@@ -94,5 +95,13 @@ class RouteServiceProvider extends ServiceProvider
             ->middleware('api')
             ->namespace($this->namespace)
             ->group(base_path('routes/api.php'));
+    }
+
+    protected function mapComApiRoutes()
+    {
+        Route::prefix('api')
+            ->middleware('comapi')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/comapi.php'));
     }
 }

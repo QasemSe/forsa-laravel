@@ -49,13 +49,19 @@ return [
             'provider' => 'managers',
         ],
         'company' => [
-            'driver' => 'passport',
+            'driver' => 'session',
             'provider' => 'companies',
         ],
 
         'api' => [
             'driver' => 'passport',
             'provider' => 'users',
+            'hash' => false,
+        ],
+
+        'comapi' => [
+            'driver' => 'passport',
+            'provider' => 'companies',
             'hash' => false,
         ],
 

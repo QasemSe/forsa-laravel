@@ -35,7 +35,7 @@ class Company extends Authenticatable
     ];
 
 
-    protected $appends  = ['status_value'];
+    protected $appends  = ['status_value', 'status_text'];
 
 
     public function getProfileImageAttribute($image)
@@ -67,6 +67,18 @@ class Company extends Authenticatable
                 return  "<span class='badge badge-success '>" . t("Active") . "</span>";
             case '0':
                 return  "<span class='badge badge-danger'>" . t("inactive") . "</span>";
+            default:
+                '';
+        }
+    }
+
+    public function getStatusTextAttribute()
+    {
+        switch ($this->status) {
+            case '1':
+                return   t("Active");
+            case '0':
+                return   t("inactive");
             default:
                 '';
         }

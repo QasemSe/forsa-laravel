@@ -16,7 +16,7 @@ class Applicant extends Model
         'status'
     ];
 
-    protected $appends  = ['status_value', 'post_title', 'user_name', 'company_name'];
+    protected $appends  = ['status_value', 'status_text', 'post_title', 'user_name', 'company_name'];
 
 
     public function getPostTitleAttribute()
@@ -55,6 +55,20 @@ class Applicant extends Model
                 return  "<span class='badge badge-success'>" . t("Accepted") . "</span>";
             case 'canceled':
                 return  "<span class='badge badge-danger'>" . t("Canceled") . "</span>";
+            default:
+                '';
+        }
+    }
+
+    public function getStatusTextAttribute()
+    {
+        switch ($this->status) {
+            case 'review':
+                return t("Review");
+            case 'accepted':
+                return   t("Accepted");
+            case 'canceled':
+                return  t("Canceled");
             default:
                 '';
         }
