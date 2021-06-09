@@ -70,4 +70,31 @@ class CompanyController extends Controller
             'paginate' => paginate($posts),
         ]);
     }
+
+
+    public function applicantStatus(Request $request)
+    {
+        $this->validate($request, [
+            'status' => 'required|in:review,accepted,canceled',
+            'applicant_id' => 'required|exists:applicants,id'
+        ]);
+
+        $applicant  = Applicant::whereHas('post', function ($q) {
+            $q->where('company_id', Auth::guard('comapi')->user()->id);
+        })->where('id', $request->applicant_id)->first();
+
+        if (!$applicant) {
+            return $this->sendError(t("Not Found"));
+        }
+
+
+        if ($applicant) {
+            $applicant->update([
+                'status' => $request->status,
+            ]);
+            return $this->sendResponse(new ApplicantsResource($applicant), t('Success To Chnage Status'));
+        } else {
+            return $this->sendError(t("Not Found"));
+        }
+    }
 }

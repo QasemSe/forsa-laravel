@@ -124,10 +124,10 @@
                         <!--begin::Body-->
                         <div class="card-body">
                             <span class="svg-icon svg-icon-2x svg-icon-white">
-                                <i class="fa fa-user-shield text-white fa-3x"></i>
+                                <i class="fa fa-cart-arrow-down text-white fa-3x"></i>
                             </span>
-                            <span class="card-title font-weight-bolder text-white font-size-h2 mb-0 mt-6 text-hover-primary d-block">{{ isset($managers) ? $managers->count() : 0 }}</span>
-                            <span class="font-weight-bold text-white font-size-sm">{{ t('Managers') }}</span>
+                            <span class="card-title font-weight-bolder text-white font-size-h2 mb-0 mt-6 text-hover-primary d-block">{{ isset($applicants) ? $applicants->count() : 0 }}</span>
+                            <span class="font-weight-bold text-white font-size-sm">{{ t('Applicants') }}</span>
                         </div>
                         <!--end::Body-->
                     </div>

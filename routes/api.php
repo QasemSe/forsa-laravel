@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Posts
-Route::get('posts', "Api\PostController@posts");
+Route::get('user/posts', "Api\UserController@posts");
+Route::get('user/postDetails/{id}', "Api\UserController@postDetails");
 
 // User
 Route::post('user/login', "Api\UserController@login");
@@ -23,4 +24,5 @@ Route::post('user/login', "Api\UserController@login");
 Route::group(['middleware' => 'auth:api', 'prefix' => 'user'], function () {
     Route::get('profile', "Api\UserController@profile");
     Route::get('archive', "Api\UserController@archive");
+    Route::post('applicant', "Api\UserController@applicant");
 });

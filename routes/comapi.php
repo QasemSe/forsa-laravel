@@ -21,4 +21,5 @@ Route::group(['middleware' => 'auth:comapi', 'prefix' => 'company'], function ()
     Route::get('profile', "Api\CompanyController@profile");
     Route::get('archive', "Api\CompanyController@archive");
     Route::get('posts', "Api\CompanyController@posts");
+    Route::post('applicantStatus', "Api\CompanyController@applicantStatus");
 });

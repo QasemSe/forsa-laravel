@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Manager;
 
 use App\Http\Controllers\Controller;
+use App\Models\Applicant;
 use App\Models\Company;
 use App\Models\Degree;
 use App\Models\Manager;
@@ -39,7 +40,7 @@ class DashbaordController extends Controller
         $companies = Company::all();
         $users = User::all();
         $posts = Post::all();
-        $managers = Manager::all();
+        $applicants = Applicant::all();
         return view('Manager.index')
             ->with('degrees', $degrees)
             ->with('specializes', $specializes)
@@ -47,7 +48,7 @@ class DashbaordController extends Controller
             ->with('skills', $skills)
             ->with('companies', $companies)
             ->with('users', $users)
-            ->with('managers', $managers)
+            ->with('applicants', $applicants)
             ->with('degrees', $degrees)
             ->with('posts', $posts);
     }

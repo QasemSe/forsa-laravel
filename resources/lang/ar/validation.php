@@ -143,8 +143,8 @@ return [
         'banner_image' => 'صورة بانر',
         'notes' => 'الملاحضات',
 
-
-
+        'applicant_id' => 'طلب التقديم',
+        'status' => 'الحالة',
 
 
         'address'               => 'العنوان',
