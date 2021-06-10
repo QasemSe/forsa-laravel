@@ -138,5 +138,6 @@ return [
   'Notes Applicant' => 'Notes Applicant',  
   'Applicant Date' => 'Applicant Date',  
   'Archive' => 'Archive',  
-  'The companies you train with' => 'The companies you train with',
+  'The companies you train with' => 'The companies you train with',  
+  'New Applicants' => 'New Applicants',
 ];

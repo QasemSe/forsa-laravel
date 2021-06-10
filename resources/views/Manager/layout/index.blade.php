@@ -218,12 +218,78 @@
             <!--begin::Header-->
             <div id="kt_header" class="header header-fixed">
 
+
                 <!--begin::Container-->
                 <div class="container-fluid d-flex align-items-stretch justify-content-between">
                     <div></div>
                     <!--begin::Topbar-->
                     <div class="topbar">
 
+                        <div class="dropdown">
+                            @php
+                                $applicants = App\Models\Applicant::where('status','review')->get()
+                            @endphp
+                            <!--begin::Toggle-->
+                            <div class="topbar-item" data-toggle="dropdown" data-offset="10px,0px" aria-expanded="false">
+                                <div class="btn btn-icon btn-clean btn-dropdown btn-lg mr-1 pulse pulse-primary">
+                                    <strong class="text-danger p-1"> {{ isset($applicants) ? $applicants->count() : '' }} </strong>
+                                    <i class="fa fa-bell  text-primary"></i>
+                                    <span class="pulse-ring"></span>
+                                </div>
+                            </div>
+                            <!--end::Toggle-->
+                            <!--begin::Dropdown-->
+                            <div class="dropdown-menu p-0 m-0 dropdown-menu-right dropdown-menu-anim-up dropdown-menu-lg" style="">
+                                <form>
+                                    <!--begin::Header-->
+                                    <div class="d-flex flex-column pt-12 bgi-size-cover bgi-no-repeat rounded-top p-5" style="background-color: #1a1a27">
+                                        <!--begin::Title-->
+                                        <h4 class="d-flex flex-center rounded-top p-3">
+                                            <span class="text-white">{{ t('Review Applicants') }}</span>
+                                        </h4>
+                                        <!--end::Title-->
+                                        <!--begin::Tabs-->
+
+                                    </div>
+                                    <!--end::Header-->
+                                    <!--begin::Content-->
+                                    <div class="tab-content">
+                                        <!--begin::Tabpane-->
+                                        <div class="tab-pane active show p-8" id="topbar_notifications_notifications" role="tabpanel">
+                                            <!--begin::Scroll-->
+                                            <div class="scroll pr-7 mr-n7 ps ps--active-y" data-scroll="true" data-height="300" data-mobile-height="200" style="height: 300px; overflow: hidden;">
+                                                <!--begin::Item-->
+                                                @if (isset($applicants) && $applicants->count() > 0)
+                                                    @foreach ($applicants as $applicant)
+                                                        <div class="d-flex align-items-center mb-6">
+                                                            <!--begin::Symbol-->
+                                                            <div class="symbol symbol-40 symbol-light-primary mr-5">
+                                                                <span class="symbol-label">
+                                                                    <span class="svg-icon svg-icon-lg svg-icon-primary">
+                                                                        <img width="40px" height="40px" src="{{ $applicant->user ? $applicant->user->image : '' }}" alt="">
+                                                                    </span>
+                                                                </span>
+                                                            </div>
+                                                            <!--end::Symbol-->
+                                                            <!--begin::Text-->
+                                                            <div class="d-flex flex-column font-weight-bold">
+                                                                <a href="{{ route('applicant.show',$applicant->id) }}" class="text-dark text-hover-primary mb-1 font-size-lg">{{ $applicant->user_name }}</a>
+                                                                <span class="text-muted">{{ $applicant->post_title }}</span>
+                                                            </div>
+                                                            <!--end::Text-->
+                                                        </div>
+                                                    @endforeach
+                                                @endif
+
+
+                                            <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; right: 0px; height: 300px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 205px;"></div></div></div>
+                                        </div>
+                                    </div>
+                                    <!--end::Content-->
+                                </form>
+                            </div>
+                            <!--end::Dropdown-->
+                        </div>
 
                         <!--end::Chat-->
                         <!--begin::Languages-->

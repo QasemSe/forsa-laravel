@@ -136,4 +136,5 @@ return  [
     'Applicant Date' => 'تاريخ التقديم',
     'Archive' => 'الأرشيف',
     'The companies you train with' => 'الشركات التي تدرب بها',
+    'New Applicants' => 'طلبات التقديم الجديدة',
 ];
