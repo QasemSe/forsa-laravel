@@ -22,7 +22,7 @@ class PostController extends Controller
         if (!$post) {
             return  redirect()->back();
         }
-        
+
         $applicant = Applicant::where('user_id', auth()->user()->id)->where('post_id', $post->id)->first();
 
         return view('User.post.show')
@@ -62,7 +62,7 @@ class PostController extends Controller
     public function search(Request $request)
     {
         $search = $request->get('search');
-        $posts = Post::where('title', 'LIKE', "%$search%")
+        $posts = Post::where('status', 1)->where('title', 'LIKE', "%$search%")
             ->orWhere('description', 'LIKE', "%$search%")
             ->where('created_at', 'desc')->paginate(5);
         return view('User.post.search')

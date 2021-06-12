@@ -176,7 +176,7 @@
                             @php
                                 $applicants = App\Models\Applicant::whereHas('post',function($q){
                                     $q->where('company_id',Auth::guard('company')->user()->id);
-                                })->where('status','review')->get();
+                                })->orderBy('created_at','desc')->where('status','review')->get();
                             @endphp
                             <!--begin::Toggle-->
                             <div class="topbar-item" data-toggle="dropdown" data-offset="10px,0px" aria-expanded="false">

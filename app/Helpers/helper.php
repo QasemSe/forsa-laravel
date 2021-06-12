@@ -23,7 +23,6 @@ function paginate($object)
 
 function t($key, $placeholder = [], $locale = null)
 {
-
     $group = 'site';
     if (is_null($locale))
         $locale = config('app.locale');

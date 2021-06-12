@@ -1,12 +1,10 @@
 @extends('Manager.layout.index')
 @section('style')
-@if (app()->getlocale() == "ar")
-    <link href="{{ asset('Backend/plugins/custom/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css"/>
-@else
-    <link href="{{ asset('Backend/plugins/custom/datatables/datatables.bundle_en.css')}}" rel="stylesheet" type="text/css"/>
-
-@endif
-
+    @if (app()->getlocale() == "ar")
+        <link href="{{ asset('Backend/plugins/custom/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css"/>
+    @else
+        <link href="{{ asset('Backend/plugins/custom/datatables/datatables.bundle_en.css')}}" rel="stylesheet" type="text/css"/>
+    @endif
 @endsection
 @section('content')
     <div class="d-flex flex-column-fluid">

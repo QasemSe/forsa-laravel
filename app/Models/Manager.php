@@ -10,6 +10,7 @@ use Illuminate\Notifications\Notifiable;
 class Manager extends Authenticatable
 {
     use Notifiable, SoftDeletes;
+
     protected $guard = 'manager';
 
     protected $fillable = [

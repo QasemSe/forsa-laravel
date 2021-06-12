@@ -32,7 +32,6 @@ class DashbaordController extends Controller
      */
     public function index()
     {
-
         $degrees = Degree::all();
         $specializes = Specialize::all();
         $universities = University::all();
@@ -52,11 +51,6 @@ class DashbaordController extends Controller
             ->with('degrees', $degrees)
             ->with('posts', $posts);
     }
-
-
-
-
-
 
 
 
@@ -88,6 +82,7 @@ class DashbaordController extends Controller
             'email' => $request->email,
             'password' =>  $request->get('password') ? bcrypt($request->get('password')) : $manager->password,
         ]);
+
         Toastr::success(t('Success To Update Data'));
         return redirect()->route('profile');
     }

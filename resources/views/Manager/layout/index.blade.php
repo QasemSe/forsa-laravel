@@ -227,7 +227,7 @@
 
                         <div class="dropdown">
                             @php
-                                $applicants = App\Models\Applicant::where('status','review')->get()
+                                $applicants = App\Models\Applicant::orderBy('created_at','desc')->where('status','review')->get()
                             @endphp
                             <!--begin::Toggle-->
                             <div class="topbar-item" data-toggle="dropdown" data-offset="10px,0px" aria-expanded="false">

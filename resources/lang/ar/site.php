@@ -2,6 +2,8 @@
 return  [
     'flagImg' => asset('Backend/media/flags/saudi-arabia.svg'),
     'datatable_lang' => asset('Backend/datatable_lang/arabic.json'),
+
+
     'Login' => 'تسجيل الدخول',
     'Sign In' => 'تسجيل الدخول',
     'Email' => 'البريد الإلكتروني',
@@ -137,4 +139,5 @@ return  [
     'Archive' => 'الأرشيف',
     'The companies you train with' => 'الشركات التي تدرب بها',
     'New Applicants' => 'طلبات التقديم الجديدة',
+
 ];

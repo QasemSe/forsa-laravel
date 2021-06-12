@@ -80,8 +80,6 @@
                                             @endforeach
                                         @endif
                                     </div>
-
-
                                 </div>
                             @else
                                 <h6 class="text-danger">{{ t('The user not found') }}</h6>

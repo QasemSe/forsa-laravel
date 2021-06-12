@@ -14,6 +14,7 @@ class Controller extends BaseController
     protected $validationRules = [];
     protected $validationMessages = [];
 
+    
     // For Upplode Images
     protected function uploadImage($file, $path = '')
     {

@@ -177,7 +177,7 @@
                     <div class="topbar">
                         <div class="dropdown">
                             @php
-                                $applicants = App\Models\Applicant::where('user_id',Auth::user()->id)->where('status','accepted')->get();
+                                $applicants = App\Models\Applicant::orderBy('created_at','desc')->where('user_id',Auth::user()->id)->where('status','accepted')->get();
                             @endphp
                             <!--begin::Toggle-->
                             <div class="topbar-item" data-toggle="dropdown" data-offset="10px,0px" aria-expanded="false">
@@ -216,7 +216,7 @@
                                                             <div class="symbol symbol-40 symbol-light-primary mr-5">
                                                                 <span class="symbol-label">
                                                                     <span class="svg-icon svg-icon-lg svg-icon-primary">
-                                                                        <img width="40px" height="40px" src="{{ $applicant->user ? $applicant->user->image : '' }}" alt="">
+                                                                        <img width="40px" height="40px" src="{{ $applicant->post->company ? $applicant->post->company->profile_image : '' }}" alt="">
                                                                     </span>
                                                                 </span>
                                                             </div>
@@ -225,7 +225,7 @@
                                                             <div class="d-flex flex-column font-weight-bold">
 
                                                                 <a href="{{ route('me.applicant.show',$applicant->id) }}" class="text-dark text-hover-primary mb-1 font-size-lg">
-                                                                    {{ $applicant->user_name }}
+                                                                    {{ $applicant->post->company_name }}
                                                                 </a>
 
                                                                 <span class="text-muted">{{ $applicant->post_title }}</span>
@@ -344,7 +344,7 @@
         <div class="d-flex align-items-center mt-5">
             <div class="symbol symbol-100 mr-5">
                 <div class="symbol-label"
-                     style="background-image:url('{{ Auth::user()->profile_image}}')"></div>
+                     style="background-image:url('{{ Auth::user()->image}}')"></div>
                 <i class="symbol-badge bg-success"></i>
             </div>
             <div class="d-flex flex-column">

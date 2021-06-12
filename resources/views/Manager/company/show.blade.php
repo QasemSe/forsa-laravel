@@ -56,74 +56,96 @@
                             </div>
                             <!--end: Info-->
                         </div>
-                        <div class="separator separator-solid my-7"></div>
                         <!--begin: Items-->
-                        <div class="d-flex align-items-center flex-wrap">
-                            <!--begin: Item-->
-                            <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
-                                <a target="_blanck" href="{{ $company->link ?  $company->link->website_url  : asset('')}}">
-                                    <span class="mr-4">
-                                        <i class="fa fa-globe-americas fa-3x text-success"></i>
-                                    </span>
-                                </a>
-                            </div>
+                        @if ($company->link)
+                            <div class="separator separator-solid my-7"></div>
 
-                            <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
-                                <a target="_blanck" href="{{ $company->link ?  $company->link->facebook_url  : asset('')}}">
-                                    <span class="mr-4">
-                                        <i class="fab fa-facebook fa-3x text-success"></i>
-                                    </span>
-                                </a>
-                            </div>
+                            <div class="d-flex align-items-center flex-wrap">
+                                <!--begin: Item-->
+                                @if ($company->link &&  $company->link->website_url)
+                                    <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
+                                        <a target="_blanck" href="{{ $company->link ?  $company->link->website_url  : asset('')}}">
+                                            <span class="mr-4">
+                                                <i class="fa fa-globe-americas fa-3x text-success"></i>
+                                            </span>
+                                        </a>
+                                    </div>
+                                @endif
 
-                            <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
-                                <a target="_blanck" href="{{ $company->link ?  $company->link->twitter_url  : asset('')}}">
-                                    <span class="mr-4">
-                                        <i class="fab fa-twitter-square fa-3x text-success"></i>
-                                    </span>
-                                </a>
-                            </div>
-                            <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
-                                <a target="_blanck" href="{{ $company->link ?  $company->link->instagram_url  : asset('')}}">
-                                    <span class="mr-4">
-                                        <i class="fab fa-instagram-square fa-3x text-success"></i>
-                                    </span>
-                                </a>
-                            </div>
-                            <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
-                                <a target="_blanck" href="{{ $company->link ?  $company->link->whatsapp_url  : asset('')}}">
-                                    <span class="mr-4">
-                                        <i class="fab fa-whatsapp-square fa-3x text-success"></i>
-                                    </span>
-                                </a>
-                            </div>
-                            <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
-                                <a target="_blanck" href="{{ $company->link ?  $company->link->linkedin_url  : asset('')}}">
-                                    <span class="mr-4">
-                                        <i class="fab fa-linkedin fa-3x text-success"></i>
-                                    </span>
-                                </a>
-                            </div>
-                            <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
-                                <a target="_blanck" href="{{ $company->link ?  $company->link->behance_url  : asset('')}}">
-                                    <span class="mr-4">
-                                        <i class="fab fa-behance-square fa-3x text-success"></i>
-                                    </span>
-                                </a>
-                            </div>
+                                @if ($company->link &&  $company->link->facebook_url)
+                                    <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
+                                        <a target="_blanck" href="{{ $company->link ?  $company->link->facebook_url  : asset('')}}">
+                                            <span class="mr-4">
+                                                <i class="fab fa-facebook fa-3x text-success"></i>
+                                            </span>
+                                        </a>
+                                    </div>
+                                @endif
+
+                                @if ($company->link &&  $company->link->twitter_url)
+                                    <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
+                                        <a target="_blanck" href="{{ $company->link ?  $company->link->twitter_url  : asset('')}}">
+                                            <span class="mr-4">
+                                                <i class="fab fa-twitter-square fa-3x text-success"></i>
+                                            </span>
+                                        </a>
+                                    </div>
+                                @endif
+
+                                @if ($company->link &&  $company->link->instagram_url)
+                                    <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
+                                        <a target="_blanck" href="{{ $company->link ?  $company->link->instagram_url  : asset('')}}">
+                                            <span class="mr-4">
+                                                <i class="fab fa-instagram-square fa-3x text-success"></i>
+                                            </span>
+                                        </a>
+                                    </div>
+                                @endif
+
+                                @if ($company->link &&  $company->link->whatsapp_url)
+                                    <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
+                                        <a target="_blanck" href="{{ $company->link ?  $company->link->whatsapp_url  : asset('')}}">
+                                            <span class="mr-4">
+                                                <i class="fab fa-whatsapp-square fa-3x text-success"></i>
+                                            </span>
+                                        </a>
+                                    </div>
+                                @endif
+
+                                @if ($company->link &&  $company->link->linkedin_url)
+                                    <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
+                                        <a target="_blanck" href="{{ $company->link ?  $company->link->linkedin_url  : asset('')}}">
+                                            <span class="mr-4">
+                                                <i class="fab fa-linkedin fa-3x text-success"></i>
+                                            </span>
+                                        </a>
+                                    </div>
+                                @endif
+
+                                @if ($company->link &&  $company->link->behance_url)
+                                    <div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
+                                        <a target="_blanck" href="{{ $company->link ?  $company->link->behance_url  : asset('')}}">
+                                            <span class="mr-4">
+                                                <i class="fab fa-behance-square fa-3x text-success"></i>
+                                            </span>
+                                        </a>
+                                    </div>
+                                @endif
 
 
 
 
-                        </div>
+                            </div>
+                        @endif
+
                         <!--begin: Items-->
                     </div>
                 </div>
 
 
                 <div class="row">
-                    @foreach ($posts as $company_post)
-                        @if ($posts && $posts->count() > 0)
+                    @if ($posts && $posts->count() > 0)
+                        @foreach ($posts as $company_post)
                             <div class="col-md-6">
                                 <div class="accordion accordion-solid accordion-panel accordion-svg-toggle mb-10" >
                                     <div class="card p-6">
@@ -132,6 +154,7 @@
                                             <div class="card-title font-size-h4 text-dark" data-toggle="collapse"
                                                     data-target="#faq{{ $company_post->id }}" aria-expanded="false" aria-controls="faq{{ $company_post->id }}" role="button">
                                                 <div class="card-label">{{ $company_post->title }}</div>
+                                                <a class="btn btn-icon btn-sm" href="{{ route('post.show',$company_post->id) }}"><i class="fa fa-eye"></i></a>
                                                 <span class="mr-4">
                                                     {!! $company_post->status_value !!}
                                                 </span>
@@ -167,14 +190,14 @@
                                     </div>
                                 </div>
                             </div>
-                        @else
-                            <div class="col-md-6">
-                                <div class="alert alert-danger" role="alert">
-                                    {{ t('No New Posts') }}
-                                </div>
-                            </div>
-                        @endif
-                    @endforeach
+                        @endforeach
+                    @else
+                    <div class="col-md-6">
+                        <div class="alert alert-danger" role="alert">
+                            {{ t('No New Posts') }}
+                        </div>
+                    </div>
+                @endif
 
                 </div>
 

@@ -11,6 +11,7 @@ use Brian2694\Toastr\Facades\Toastr;
 
 class ManagerController extends Controller
 {
+
     public function __construct()
     {
         $this->middleware('manager');
@@ -31,7 +32,6 @@ class ManagerController extends Controller
         return view('Manager.manager.index');
     }
 
-
     public function getManagerData(Request $request)
     {
 
@@ -39,20 +39,16 @@ class ManagerController extends Controller
         return Datatables::of($data)
             ->addIndexColumn()
             ->addColumn('action', function ($row) {
-
                 $btn = '';
-
                 $btn .= "<a data-toggle='tooltip' data-placement='top' data-original-title='تعديل'
                         href=" . route('manager.edit', $row->id) . "
                         class=' btn btn-outline-primary btn-sm  btn-icon btn-icon-sm'>
                         <i class='fa fa-edit'></i>
                     </a> ";
-
                 // $btn .= "<button data-toggle='tooltip' data-placement='top' data-original-title='حذف'
                 //         type='button' name='delete' id='$row->id'
                 //         class='delete  btn btn-outline-primary btn-sm  btn-icon btn-icon-sm'>
                 //         <i class='fa fa-trash-alt'></button>";
-
 
                 return $btn;
             })
@@ -78,7 +74,8 @@ class ManagerController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
-     */
+    */
+
     public function store(Request $request)
     {
         $request->validate($this->validationRules);

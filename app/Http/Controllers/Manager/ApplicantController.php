@@ -82,7 +82,7 @@ class ApplicantController extends Controller
             return redirect()->route('applicant.index');
         }
         // to get companies user work in it
-        $applicants_users = Applicant::where('status', 1)->where('user_id', $applicant->user_id)->get();
+        $applicants_users = Applicant::where('status', 'accepted')->where('user_id', $applicant->user_id)->get();
 
         return view("Manager.applicant.show")
             ->with('applicants_users', $applicants_users)

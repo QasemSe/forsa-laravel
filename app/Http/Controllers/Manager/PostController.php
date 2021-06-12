@@ -21,6 +21,8 @@ class PostController extends Controller
         $this->validationRules["company_id"] = 'required|exists:companies,id';
         $this->validationRules["expire_date"] = 'required|date_format:Y-m-d|after_or_equal:' . date('Y-m-d');
         $this->validationRules["skills_id"] = 'required|min:1|exists:skills,id';
+        $this->validationRules["description"] = 'required';
+
     }
 
 

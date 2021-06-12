@@ -21,7 +21,7 @@ class CompanyController extends Controller
         $this->validationRules["password"] = 'required|min:6';
         $this->validationRules["profile_image"] = 'required|image';
         $this->validationRules["banner_image"] = 'nullable|image';
-        $this->validationRules["mobile_number"] = 'required|numeric';
+        $this->validationRules["mobile_number"] = 'nullable|numeric';
         $this->validationRules["address"] = 'nullable';
         $this->validationRules["state"] = 'nullable';
         $this->validationRules["description"] = 'nullable';

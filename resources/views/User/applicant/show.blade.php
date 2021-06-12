@@ -41,8 +41,11 @@
                                     </div>
                                     <hr>
                                     <div class="mt-4">
-                                        <h4>{{ t('Description') }}</h4>
-                                        <p class="mt-2">{!! $applicant->post->company->description !!}</p>
+                                        @if ($applicant->post->company->description)
+                                            <h4>{{ t('Description') }}</h4>
+                                            <p class="mt-2">{!! $applicant->post->company->description !!}</p>
+                                        @endif
+
                                     </div>
 
                                 </div>
