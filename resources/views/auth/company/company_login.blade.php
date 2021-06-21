@@ -5,7 +5,8 @@
 	<head><base href="../../../../">
 		<meta charset="utf-8" />
 		<title>{{ t('Company Login') }}</title>
-		<meta name="description" content="Login page example" />
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="description" content="Login page example" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
 		<link href="{{ asset('Backend/css/login-4.css') }}" rel="stylesheet" type="text/css" />

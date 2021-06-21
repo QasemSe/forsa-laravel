@@ -20,15 +20,15 @@ class UserController extends Controller
     {
         $this->middleware('manager');
         $this->validationRules["name"] = 'required';
-        $this->validationRules["image"] = 'required';
+        $this->validationRules["image"] = 'nullable';
         $this->validationRules["email"] = 'required|unique:users,email';
         $this->validationRules["password"] = 'required|min:6';
-        $this->validationRules["mobile_number"] = 'nullbale|numeric';
-        $this->validationRules["avarage"] = 'nullbale|numeric';
-        $this->validationRules["specialize_id"] = 'nullbale|exists:specializes,id';
-        $this->validationRules["degree_id"] = 'nullbale|exists:degrees,id';
-        $this->validationRules["university_id"] = 'nullbale|exists:universities,id';
-        $this->validationRules["skills_id"] = 'nullbale|min:1|exists:skills,id';
+        $this->validationRules["mobile_number"] = 'nullable|numeric';
+        $this->validationRules["avarage"] = 'nullable|numeric';
+        $this->validationRules["specialize_id"] = 'nullable|exists:specializes,id';
+        $this->validationRules["degree_id"] = 'nullable|exists:degrees,id';
+        $this->validationRules["university_id"] = 'nullable|exists:universities,id';
+        $this->validationRules["skills_id"] = 'nullable|min:1|exists:skills,id';
     }
 
 
