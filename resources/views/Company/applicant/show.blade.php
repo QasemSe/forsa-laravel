@@ -58,9 +58,10 @@
                                     <hr>
 
                                     <div class="mt-4">
-                                        <h4>{{ t('The companies you train with') }}</h4>
-                                        <br>
+
                                         @if (isset($applicants_users) && $applicants_users->count() > 0)
+                                            <h4>{{ t('The companies you train with') }}</h4>
+                                            <br>
                                             @foreach ($applicants_users->unique('company_name') as $applicants_user)
 
                                                 @if ($applicants_user->post && $applicants_user->post->company)

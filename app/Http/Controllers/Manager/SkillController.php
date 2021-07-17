@@ -14,7 +14,7 @@ class SkillController extends Controller
     public function __construct()
     {
         $this->middleware('manager');
-        $this->validationRules["name"] = 'required';
+        $this->validationRules["name"] = 'required|unique:skills,name';
     }
 
 
@@ -109,6 +109,7 @@ class SkillController extends Controller
             Toastr::error(t("Not Found"));
             return redirect()->route('skill.index');
         }
+        $this->validationRules["name"] = 'required|unique:skills,name,' . $id . ',id';
         $validator = JsValidator::make($this->validationRules, $this->validationMessages);
         return view("Manager.skill.edit")
             ->with('validator', $validator)
@@ -129,7 +130,7 @@ class SkillController extends Controller
             Toastr::error(t("Not Found"));
             return redirect()->route('skill.index');
         }
-
+        $this->validationRules["name"] = 'required|unique:skills,name,' . $id . ',id';
         $request->validate($this->validationRules);
 
         $data = $request->all();

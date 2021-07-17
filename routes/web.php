@@ -40,7 +40,7 @@ Route::group(
         Route::group(
             [
                 'namespace' => 'Manager',
-                'prefix' => 'manager',
+                'prefix' => 'system-manager',
                 'middleware' => 'manager'
             ],
             function () {
@@ -134,7 +134,7 @@ Route::group(
                 // Applicant
                 Route::get('applicants', 'ApplicantController@index')->name('applicant.index');
                 Route::get('applicant/show/{id}', 'ApplicantController@show')->name('applicant.show');
-                Route::get('applicant/edit/{id}', 'ApplicantController@edit')->name('applicant.edit');
+//                Route::get('applicant/edit/{id}', 'ApplicantController@edit')->name('applicant.edit');
                 Route::post('applicant/update/{id}', 'ApplicantController@update')->name('applicant.update');
                 Route::post('applicant/status/{id}/{post_id}', 'ApplicantController@status')->name('applicant.status');
                 Route::get('applicant/getApplicantData', 'ApplicantController@getApplicantData')->name('applicant.getApplicantData');

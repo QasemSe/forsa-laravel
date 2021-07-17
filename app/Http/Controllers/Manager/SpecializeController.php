@@ -15,7 +15,7 @@ class SpecializeController extends Controller
     public function __construct()
     {
         $this->middleware('manager');
-        $this->validationRules["name"] = 'required';
+        $this->validationRules["name"] = 'required|unique:specializes,name';
     }
 
 
@@ -110,6 +110,8 @@ class SpecializeController extends Controller
             Toastr::error(t("Not Found"));
             return redirect()->route('specialize.index');
         }
+        $this->validationRules["name"] = 'required|unique:specializes,name,' . $id . ',id';
+
         $validator = JsValidator::make($this->validationRules, $this->validationMessages);
         return view("Manager.specialize.edit")
             ->with('validator', $validator)
@@ -130,7 +132,7 @@ class SpecializeController extends Controller
             Toastr::error(t("Not Found"));
             return redirect()->route('specialize.index');
         }
-
+        $this->validationRules["name"] = 'required|unique:specializes,name,' . $id . ',id';
         $request->validate($this->validationRules);
 
         $data = $request->all();

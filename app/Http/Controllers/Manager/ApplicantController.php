@@ -55,11 +55,11 @@ class ApplicantController extends Controller
             ->addColumn('action', function ($row) {
 
                 $btn = '';
-                $btn .= "<a data-toggle='tooltip' data-placement='top' data-original-title='تعديل'
-                        href=" . route('applicant.edit', $row->id) . "
-                        class=' btn btn-outline-primary btn-sm  btn-icon btn-icon-sm'>
-                        <i class='fa fa-edit'></i>
-                    </a> ";
+//                $btn .= "<a data-toggle='tooltip' data-placement='top' data-original-title='تعديل'
+//                        href=" . route('applicant.edit', $row->id) . "
+//                        class=' btn btn-outline-primary btn-sm  btn-icon btn-icon-sm'>
+//                        <i class='fa fa-edit'></i>
+//                    </a> ";
 
                 $btn .= "<a data-toggle='tooltip' data-placement='top' data-original-title='تعديل'
                     href=" . route('applicant.show', $row->id) . "

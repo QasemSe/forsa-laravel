@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\ApplicantsResource;
 use App\Http\Resources\CompanyResource;
 use App\Http\Resources\PostResource;
+use App\Http\Resources\ShowApplicantsResource;
 use App\Models\Applicant;
 use App\Models\Company;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Str;
@@ -22,9 +24,6 @@ class CompanyController extends Controller
             'email' => 'required|email|exists:companies,email',
             'password' => 'required',
         ]);
-
-
-
         $company = Company::where('email', $request->email)->first();
         if ($company) {
             if (Hash::check($request->password, $company->password)) {
@@ -54,21 +53,28 @@ class CompanyController extends Controller
             $q->where('company_id', Auth::guard('comapi')->user()->id);
         })->paginate(5);
 
-        return $this->sendResponse([
-            'items' => ApplicantsResource::collection($applicants),
-            'paginate' => paginate($applicants),
-        ]);
+        if ($applicants->count() > 0) {
+            return $this->sendResponse([
+                'items' => ApplicantsResource::collection($applicants),
+                'paginate' => paginate($applicants),
+            ]);
+        } else {
+            return $this->sendEmptyResponse();
+        }
     }
 
 
     public function posts()
     {
         $posts  = Post::where('company_id', Auth::guard('comapi')->user()->id)->paginate(5);
-
-        return $this->sendResponse([
-            'items' => PostResource::collection($posts),
-            'paginate' => paginate($posts),
-        ]);
+        if ($posts->count() > 0) {
+            return $this->sendResponse([
+                'items' => PostResource::collection($posts),
+                'paginate' => paginate($posts),
+            ]);
+        } else {
+            return $this->sendEmptyResponse();
+        }
     }
 
 
@@ -86,8 +92,6 @@ class CompanyController extends Controller
         if (!$applicant) {
             return $this->sendError(t("Not Found"));
         }
-
-
         if ($applicant) {
             $applicant->update([
                 'status' => $request->status,
@@ -96,5 +100,75 @@ class CompanyController extends Controller
         } else {
             return $this->sendError(t("Not Found"));
         }
+    }
+
+    public function showApplicant($applicant_id)
+    {
+        $applicant  = Applicant::whereHas('post', function ($q) {
+            $q->where('company_id', Auth::guard('comapi')->user()->id);
+        })->where('id', $applicant_id)->first();
+
+        if (!$applicant) {
+            return $this->sendError("Not Found");
+        }
+        if ($applicant) {
+            return $this->sendResponse(new ShowApplicantsResource($applicant));
+        } else {
+            return $this->sendEmptyResponse();
+        }
+    }
+
+
+    //posts//
+    public function createPost(Request $request)
+    {
+        $this->validate($request, [
+            'title' => 'required',
+            'expire_date' => 'required|date_format:Y-m-d|after_or_equal:' . date('Y-m-d'),
+            'skills_id' => 'required|min:1|exists:skills,id',
+            'description' => 'required',
+        ]);
+
+        $data = $request->all();
+        $data['status'] = $request->get('status', 0);
+        $data['company_id'] = Auth::guard('comapi')->user()->id;
+        $post = Post::create($data);
+        $post->skills()->sync($request->skills_id);
+        $success_message = t('Success To Save Data');
+        return $this->sendResponse(new PostResource($post), $success_message);
+    }
+
+    public function editPost(Request $request, $id)
+    {
+        $post  = Post::where('company_id', Auth::guard('comapi')->user()->id)->where('id', $id)->first();
+        if (!$post) {
+            return $this->sendError("Not Found");
+        }
+        $this->validate($request, [
+            'title' => 'required',
+            'expire_date' => 'required|date_format:Y-m-d|after_or_equal:' . date('Y-m-d'),
+            'skills_id' => 'required|min:1|exists:skills,id',
+            'description' => 'required',
+        ]);
+
+        $data = $request->all();
+        $data['status'] = $request->get('status', 0);
+        $data['company_id'] = Auth::guard('comapi')->user()->id;
+        $post->update($data);
+        $post->skills()->sync($request->skills_id);
+        $success_message = t('Success To Update Data');
+        return $this->sendResponse(new PostResource($post), $success_message);
+    }
+
+    public function deletePost($id)
+    {
+        $post  = Post::where('company_id', Auth::guard('comapi')->user()->id)->where('id', $id)->first();
+        if (!$post) {
+            return $this->sendError("Not Found");
+        }
+
+        $post->delete($post->id);
+        $success_message = t('Success To Delete Data');
+        return $this->sendResponse(null, $success_message);
     }
 }

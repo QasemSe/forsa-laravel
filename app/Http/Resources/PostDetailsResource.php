@@ -20,8 +20,8 @@ class PostDetailsResource extends JsonResource
             'createAT' => $this->created_at->format('Y-m-d'),
             'dueDate' => $this->expire_date->format('Y-m-d'),
             'imageCompany' => $this->company ? $this->company->profile_image : '',
-            'postText' => $this->title,
-            'description' => $this->description,
+            'postTitle' => $this->title,
+            'postText' => $this->description,
             'status' => $this->status_text,
             'skills' =>   SkillResource::collection($this->skills),
         ];

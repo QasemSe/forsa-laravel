@@ -14,7 +14,7 @@ class Controller extends BaseController
     protected $validationRules = [];
     protected $validationMessages = [];
 
-    
+
     // For Upplode Images
     protected function uploadImage($file, $path = '')
     {
@@ -39,6 +39,16 @@ class Controller extends BaseController
             'data'    => $result,
             'message' => $message,
             'status' => $code,
+        ];
+        return response()->json($response, 200);
+    }
+
+    protected function sendEmptyResponse()
+    {
+        $response = [
+            'success' => false,
+            'data'    => null,
+            'status' => 200,
         ];
         return response()->json($response, 200);
     }

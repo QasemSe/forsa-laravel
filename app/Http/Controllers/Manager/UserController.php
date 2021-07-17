@@ -20,7 +20,7 @@ class UserController extends Controller
     {
         $this->middleware('manager');
         $this->validationRules["name"] = 'required';
-        $this->validationRules["image"] = 'nullable';
+        $this->validationRules["image"] = 'required';
         $this->validationRules["email"] = 'required|unique:users,email';
         $this->validationRules["password"] = 'required|min:6';
         $this->validationRules["mobile_number"] = 'nullable|numeric';

@@ -15,7 +15,7 @@ class DegreeController extends Controller
     public function __construct()
     {
         $this->middleware('manager');
-        $this->validationRules["name"] = 'required';
+        $this->validationRules["name"] = 'required|unique:degrees,name';
     }
 
 
@@ -110,6 +110,8 @@ class DegreeController extends Controller
             Toastr::error(t("Not Found"));
             return redirect()->route('degree.index');
         }
+        $this->validationRules["name"] = 'required|unique:degress,name,' . $id . ',id';
+
         $validator = JsValidator::make($this->validationRules, $this->validationMessages);
         return view("Manager.degree.edit")
             ->with('validator', $validator)
@@ -130,7 +132,7 @@ class DegreeController extends Controller
             Toastr::error(t("Not Found"));
             return redirect()->route('degree.index');
         }
-
+        $this->validationRules["name"] = 'required|unique:degrees,name,' . $id . ',id';
         $request->validate($this->validationRules);
 
         $data = $request->all();

@@ -15,9 +15,8 @@ class UniversityController extends Controller
     public function __construct()
     {
         $this->middleware('manager');
-        $this->validationRules["name"] = 'required';
+        $this->validationRules["name"] = 'required|unique:universities,name';
     }
-
 
     /**
      * Display a listing of the resource.
@@ -110,6 +109,8 @@ class UniversityController extends Controller
             Toastr::error(t("Not Found"));
             return redirect()->route('university.index');
         }
+        $this->validationRules["name"] = 'required|unique:universities,name,' .$id.',id';
+
         $validator = JsValidator::make($this->validationRules, $this->validationMessages);
         return view("Manager.university.edit")
             ->with('validator', $validator)
@@ -130,7 +131,7 @@ class UniversityController extends Controller
             Toastr::error(t("Not Found"));
             return redirect()->route('university.index');
         }
-
+        $this->validationRules["name"] = 'required|unique:universities,name,' .$id.',id';
         $request->validate($this->validationRules);
 
         $data = $request->all();

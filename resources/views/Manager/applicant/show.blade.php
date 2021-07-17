@@ -59,9 +59,10 @@
                                     <hr>
 
                                     <div class="mt-4">
+
+                                        @if (isset($applicants_users) && $applicants_users->count() > 0)
                                         <h4>{{ t('The companies you train with') }}</h4>
                                         <br>
-                                        @if (isset($applicants_users) && $applicants_users->count() > 0)
                                             @foreach ($applicants_users->unique('company_name') as $applicants_user)
 
                                                 @if ($applicants_user->post && $applicants_user->post->company)
@@ -80,6 +81,8 @@
                                             @endforeach
                                         @endif
                                     </div>
+
+
                                 </div>
                             @else
                                 <h6 class="text-danger">{{ t('The user not found') }}</h6>
