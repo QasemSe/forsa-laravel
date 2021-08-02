@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// getConstant
+Route::get('getConstant', "Api\getConstantController@getConstant");
+
+
+
 // Posts
 Route::get('user/posts', "Api\UserController@posts");
 Route::get('user/postDetails/{id}', "Api\UserController@postDetails");

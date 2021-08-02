@@ -15,6 +15,7 @@ class ApplicantsResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'id' => $this->id,
             'companyName' => $this->post ? $this->post->company_name : '',
             'date' => $this->created_at->format('Y-m-d H:i'),
             'postTitle' => $this->post_title,
