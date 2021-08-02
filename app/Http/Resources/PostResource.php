@@ -21,6 +21,7 @@ class PostResource extends JsonResource
             'dueDate' => $this->expire_date->format('Y-m-d'),
             'imageCompany' => $this->company ? $this->company->profile_image : '',
             'postTitle' => $this->title,
+            'postText' => $this->description,
             'status' => $this->status_text,
             'skills' =>   SkillResource::collection($this->skills),
         ];
