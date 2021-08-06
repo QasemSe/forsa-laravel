@@ -178,14 +178,9 @@ class UserController extends Controller
 
     public function showApplicant(Request $request)
     {
-        $applicant = Applicant::where('user_id', Auth::user()->id)->where('id', $applicant_id)->first();
+        $applicant = Applicant::where('user_id', Auth::user()->id)->where('id', $request->applicant_id)->first();
         if (!$applicant) {
             return $this->sendError("Not Found");
-        }
-        if ($applicant) {
-            return $this->sendResponse(new ApplicantsResource($applicant));
-        } else {
-            return $this->sendEmptyResponse();
         }
     }
 
