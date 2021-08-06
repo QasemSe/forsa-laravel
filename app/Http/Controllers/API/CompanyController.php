@@ -140,7 +140,9 @@ class CompanyController extends Controller
 
     public function editPost(Request $request)
     {
-        $post  = Post::where('company_id', Auth::guard('comapi')->user()->id)->where('id', $id)->first();
+        $company_id = Auth::guard('comapi')->user()->id;
+        $post  = Post::where('company_id',$company_id)->where('id', $request->post_id)->first();
+
         if (!$post) {
             return $this->sendError("Not Found");
         }
@@ -162,7 +164,9 @@ class CompanyController extends Controller
 
     public function deletePost(Request $request)
     {
-        $post  = Post::where('company_id', Auth::guard('comapi')->user()->id)->where('id', $id)->first();
+        $company_id = Auth::guard('comapi')->user()->id;
+
+        $post  = Post::where('company_id', $company_id)->where('id', $request->post_id)->first();
         if (!$post) {
             return $this->sendError("Not Found");
         }
