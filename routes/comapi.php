@@ -23,10 +23,11 @@ Route::group(['middleware' => 'auth:comapi', 'prefix' => 'company'], function ()
     //posts//
     Route::get('posts', "Api\CompanyController@posts");
     Route::post('createPost', "Api\CompanyController@createPost");
-    Route::post('editPost/{id}', "Api\CompanyController@editPost");
-    Route::post('deletePost/{id}', "Api\CompanyController@deletePost");
+    Route::post('editPost', "Api\CompanyController@editPost");
+    Route::post('deletePost', "Api\CompanyController@deletePost");
 
     Route::post('applicantStatus', "Api\CompanyController@applicantStatus");
-    Route::get('applicant/show/{applicant_id}', 'Api\CompanyController@showApplicant');
+    Route::get('applicant/show', 'Api\CompanyController@showApplicant');
 
+    Route::get('post/applicants', 'Api\CompanyController@showPostApplicants');
 });

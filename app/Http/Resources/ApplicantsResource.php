@@ -22,6 +22,7 @@ class ApplicantsResource extends JsonResource
             'applicant_notes' =>  $this->notes,
             'status' => $this->status_text,
             'skills' => $this->post ? SkillResource::collection($this->post->skills) : '',
+            'user' => new UserResource($this->user)
         ];
     }
 }

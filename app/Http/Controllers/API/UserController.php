@@ -137,9 +137,9 @@ class UserController extends Controller
     }
 
     // For User Post Details
-    public function postDetails($id)
+    public function postDetails(Request $request)
     {
-        $post = Post::where('id', $id)->where('status', 1)->first();
+        $post = Post::where('id', $request->post_id)->where('status', 1)->first();
         if (!$post) {
             return $this->sendError("Not Found");
         }
@@ -176,7 +176,7 @@ class UserController extends Controller
         }
     }
 
-    public function showApplicant($applicant_id)
+    public function showApplicant(Request $request)
     {
         $applicant = Applicant::where('user_id', Auth::user()->id)->where('id', $applicant_id)->first();
         if (!$applicant) {
@@ -190,7 +190,7 @@ class UserController extends Controller
     }
 
 
-    public function showCompany($id)
+    public function showCompany(Request $request)
     {
         $company = Company::find($id);
         if (!$company) {

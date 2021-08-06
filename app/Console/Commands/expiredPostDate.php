@@ -39,7 +39,7 @@ class expiredPostDate extends Command
      */
     public function handle()
     {
-        $post = Post::whereDate('expire_date', now()->format('Y-m-d'))->get();
+        $post = Post::whereDate('expire_date', '<',  now()->format('Y-m-d'))->get();
         $post = $post->each(function ($q) {
             $q->status = 0;
             $q->save();

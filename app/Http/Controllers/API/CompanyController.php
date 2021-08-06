@@ -102,11 +102,11 @@ class CompanyController extends Controller
         }
     }
 
-    public function showApplicant($applicant_id)
+    public function showApplicant(Request $request)
     {
         $applicant  = Applicant::whereHas('post', function ($q) {
             $q->where('company_id', Auth::guard('comapi')->user()->id);
-        })->where('id', $applicant_id)->first();
+        })->where('id', $request->applicant_id)->first();
 
         if (!$applicant) {
             return $this->sendError("Not Found");
@@ -138,7 +138,7 @@ class CompanyController extends Controller
         return $this->sendResponse(new PostResource($post), $success_message);
     }
 
-    public function editPost(Request $request, $id)
+    public function editPost(Request $request)
     {
         $post  = Post::where('company_id', Auth::guard('comapi')->user()->id)->where('id', $id)->first();
         if (!$post) {
@@ -160,7 +160,7 @@ class CompanyController extends Controller
         return $this->sendResponse(new PostResource($post), $success_message);
     }
 
-    public function deletePost($id)
+    public function deletePost(Request $request)
     {
         $post  = Post::where('company_id', Auth::guard('comapi')->user()->id)->where('id', $id)->first();
         if (!$post) {
@@ -170,5 +170,15 @@ class CompanyController extends Controller
         $post->delete($post->id);
         $success_message = t('Success To Delete Data');
         return $this->sendResponse(null, $success_message);
+    }
+
+    public function showPostApplicants(Request $request)
+    {
+        $company_id = Auth::guard('comapi')->user()->id;
+        $post  = Post::where('company_id',$company_id )->where('id', $request->post_id)->first();
+        if (!$post) {
+            return $this->sendError("Not Found");
+        }
+        return $this->sendResponse(new PostApplicants($post));
     }
 }

@@ -21,8 +21,8 @@ Route::get('getConstant', "Api\getConstantController@getConstant");
 
 // Posts
 Route::get('user/posts', "Api\UserController@posts");
-Route::get('user/postDetails/{id}', "Api\UserController@postDetails");
-Route::get('showCompany/{id}', "Api\UserController@showCompany");
+Route::get('user/postDetails', "Api\UserController@postDetails");
+Route::get('user/showCompany', "Api\UserController@showCompany");
 
 // User
 Route::post('userRegister', "Api\UserController@register");
@@ -34,6 +34,6 @@ Route::group(['middleware' => 'auth:api', 'prefix' => 'user'], function () {
 //    applicants
     Route::get('archive', "Api\UserController@archive");
     Route::post('applicant', "Api\UserController@applicant");
-    Route::get('applicant/show/{applicant_id}', 'Api\UserController@showApplicant');
+    Route::get('applicant/show', 'Api\UserController@showApplicant');
 
 });
