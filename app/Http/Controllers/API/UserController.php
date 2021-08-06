@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Str;
 
+
 class UserController extends Controller
 {
     public function login(Request $request)
