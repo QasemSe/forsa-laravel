@@ -20,6 +20,7 @@ class getConstantController extends Controller
         $degrees = Degree::all();
         $universities = Skill::all();
         $specialize = Specialize::all();
+
         return $this->sendResponse([
             'skills' => SkillResource::collection($skills),
             'degrees' => DegreeResource::collection($degrees),

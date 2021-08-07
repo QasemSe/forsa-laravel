@@ -25,9 +25,8 @@ Route::group(
         Route::post('company/login', 'Auth\LoginController@loginCompany')->name('loginCompany');
         Route::get('company/register', 'Auth\LoginController@showRegisterCompany')->name('showRegisterCompany');
         Route::post('company/register', 'Auth\LoginController@registerCompany')->name('registerCompany');
-        
-        Route::post('logoutCompany', 'Auth\LoginController@logoutCompany')->name('logoutCompany');
 
+        Route::post('logoutCompany', 'Auth\LoginController@logoutCompany')->name('logoutCompany');
 
 
         // Manager

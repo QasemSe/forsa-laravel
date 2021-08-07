@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Str;
 
-
 class UserController extends Controller
 {
     public function login(Request $request)
@@ -188,7 +187,7 @@ class UserController extends Controller
 
     public function showCompany(Request $request)
     {
-        $company = Company::find($id);
+        $company = Company::find($request->company_id);
         if (!$company) {
             return $this->sendError("Not Found");
         }

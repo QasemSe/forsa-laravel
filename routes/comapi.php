@@ -30,4 +30,5 @@ Route::group(['middleware' => 'auth:comapi', 'prefix' => 'company'], function ()
     Route::get('applicant/show', 'Api\CompanyController@showApplicant');
 
     Route::get('post/applicants', 'Api\CompanyController@showPostApplicants');
+
 });

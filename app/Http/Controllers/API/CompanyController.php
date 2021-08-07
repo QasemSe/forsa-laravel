@@ -176,13 +176,16 @@ class CompanyController extends Controller
         return $this->sendResponse(null, $success_message);
     }
 
+
     public function showPostApplicants(Request $request)
     {
         $company_id = Auth::guard('comapi')->user()->id;
         $post  = Post::where('company_id',$company_id )->where('id', $request->post_id)->first();
+
         if (!$post) {
             return $this->sendError("Not Found");
         }
         return $this->sendResponse(new PostApplicants($post));
     }
+
 }
