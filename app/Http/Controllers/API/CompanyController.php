@@ -188,4 +188,19 @@ class CompanyController extends Controller
         return $this->sendResponse(new PostApplicants($post));
     }
 
+    public function postStatus(Request $request)
+    {
+        $request->validate([
+            'status' => 'required|in:0,1'
+        ]);
+        $company_id = Auth::guard('comapi')->user()->id;
+        $post  = Post::where('company_id',$company_id )->where('id', $request->post_id)->first();
+        if (!$post) {
+            return $this->sendError("Not Found");
+        }
+        $post->update([
+            'status' => $request->status
+        ]);
+        return $this->sendResponse(new PostResource($post));
+    }
 }

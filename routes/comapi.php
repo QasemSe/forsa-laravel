@@ -31,4 +31,5 @@ Route::group(['middleware' => 'auth:comapi', 'prefix' => 'company'], function ()
 
     Route::get('post/applicants', 'Api\CompanyController@showPostApplicants');
 
+    Route::post('post/status', 'Api\CompanyController@postStatus');
 });
