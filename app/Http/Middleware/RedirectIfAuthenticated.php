@@ -29,8 +29,8 @@ class RedirectIfAuthenticated
         }
 
 
-        if ($guard == "web" && Auth::check()) {
-            return redirect()->route('me.post.index');
+        if ($guard == "web" && Auth::guard('web')->check()) {
+            return redirect()->route('me.dashboard');
         }
 
 

@@ -22,10 +22,18 @@
 
                         <!--end::Dropdown-->
                         <!--begin::Button-->
-                        <a href="{{ route('myCompany.post.add') }}" class="btn btn-primary font-weight-bolder">
-                            <span class="svg-icon svg-icon-md"><i class="fa fa-plus"></i></span>
-                            {{ t("Add New") }}
-                        </a>
+                        @if (Auth::guard('company')->user()->status == 0)
+                            <a class="btn btn-primary font-weight-bolder disabled">
+                                <span class="svg-icon svg-icon-md"><i class="fa fa-plus"></i></span>
+                                {{ t("Add New") }}
+                            </a>
+                        @else
+                            <a href="{{ route('myCompany.post.add') }}" class="btn btn-primary font-weight-bolder">
+                                <span class="svg-icon svg-icon-md"><i class="fa fa-plus"></i></span>
+                                {{ t("Add New") }}
+                            </a>
+                        @endif
+
                         <!--end::Button-->
                     </div>
                 </div>

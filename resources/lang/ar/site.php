@@ -1,5 +1,5 @@
 <?php
-return  [
+return [
     'flagImg' => asset('Backend/media/flags/saudi-arabia.svg'),
     'datatable_lang' => asset('Backend/datatable_lang/arabic.json'),
 
@@ -140,4 +140,7 @@ return  [
     'The companies you train with' => 'الشركات التي تدرب بها',
     'New Applicants' => 'طلبات التدريب الجديدة',
 
+    'The Company Status is inActive' => 'هذه الصفحة غير متاحة للشركات الغير مفعلة',
+    'Change status' => 'تغيير الحالة',
+    'Success To Update Status' => 'Success To Update Status',
 ];

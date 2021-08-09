@@ -33,6 +33,7 @@
                                             <th>{{ t("Post Title") }}</th>
                                             <th>{{ t("User Name") }}</th>
                                             <th>{{ t("Status") }}</th>
+                                            <th>{{ t("Change status") }}</th>
                                             <th>{{ t("Actions") }}</th>
                                         </tr>
 
@@ -81,8 +82,6 @@
         <script src="{{ asset('Backend/plugins/custom/datatables/datatables.bundle.js')}}"></script>
 
 
-
-
         <script type="text/javascript">
             $(function () {
                 var table = $('.datatable').DataTable({
@@ -99,6 +98,7 @@
                         {data: 'post_title', name: 'post_title'},
                         {data: 'user_name', name: 'user_name'},
                         {data: 'status_value', name: 'status_value'},
+                        {data: 'change_status', name: 'change_status'},
                         {data: 'action', name: 'action', orderable: false, searchable: false},
                     ]
                 });

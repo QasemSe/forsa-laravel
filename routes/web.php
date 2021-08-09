@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
+Route::get('', 'FrontEndController@index')->name('home.index');
 
 Route::group(
     [

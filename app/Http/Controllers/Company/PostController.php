@@ -59,23 +59,37 @@ class PostController extends Controller
 
                 $btn = '';
 
+                if (Auth::guard('company')->user()->status == 0) {
+                    $btn .= "<a class=' btn btn-outline-primary btn-sm  btn-icon btn-icon-sm disabled'>
+                        <i class='fa fa-eye'></i>
+                    </a> ";
 
-                $btn .= "<a data-toggle='tooltip' data-placement='top' data-original-title='" . t('Show Applicant') . "'
+                    $btn .= "<a  class=' btn btn-outline-primary btn-sm  btn-icon btn-icon-sm disabled'>
+                        <i class='fa fa-edit'></i>
+                    </a> ";
+
+                    $btn .= "<button type='button' disabled
+                        class='btn btn-outline-primary btn-sm  btn-icon btn-icon-sm disabled'>
+                        <i class='fa fa-trash-alt'></button>";
+                }else {
+                    $btn .= "<a data-toggle='tooltip' data-placement='top' data-original-title='" . t('Show Applicant') . "'
                         href=" . route('myCompany.post.show', $row->id) . "
                         class=' btn btn-outline-primary btn-sm  btn-icon btn-icon-sm'>
                         <i class='fa fa-eye'></i>
                     </a> ";
 
-                $btn .= "<a data-toggle='tooltip' data-placement='top' data-original-title='" . t('Edit') . "'
+                    $btn .= "<a data-toggle='tooltip' data-placement='top' data-original-title='" . t('Edit') . "'
                         href=" . route('myCompany.post.edit', $row->id) . "
                         class=' btn btn-outline-primary btn-sm  btn-icon btn-icon-sm'>
                         <i class='fa fa-edit'></i>
                     </a> ";
 
-                $btn .= "<button data-toggle='tooltip' data-placement='top' data-original-title='" . t('Delete') . "'
+                    $btn .= "<button data-toggle='tooltip' data-placement='top' data-original-title='" . t('Delete') . "'
                         type='button' name='delete' id='$row->id'
                         class='delete  btn btn-outline-primary btn-sm  btn-icon btn-icon-sm'>
                         <i class='fa fa-trash-alt'></button>";
+                }
+
 
 
                 return $btn;
@@ -92,6 +106,11 @@ class PostController extends Controller
      */
     public function create()
     {
+        if (Auth::guard('company')->user()->status == 0) {
+            Toastr::warning(t('The Company Status is inActive'));
+            return redirect()->back();
+        }
+
         $validator = JsValidator::make($this->validationRules, $this->validationMessages);
         $skills = Skill::all();
         return view('Company.post.add')
@@ -107,6 +126,11 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        if (Auth::guard('company')->user()->status == 0) {
+            Toastr::warning(t('The Company Status is inActive'));
+            return redirect()->back();
+        }
+
         $request->validate($this->validationRules);
         $data = $request->all();
         $data['status'] = $request->get('status', 0);
@@ -126,6 +150,10 @@ class PostController extends Controller
      */
     public function show($id)
     {
+        if (Auth::guard('company')->user()->status == 0) {
+            Toastr::warning(t('The Company Status is inActive'));
+            return redirect()->back();
+        }
         $post = Post::where('company_id', Auth::guard('company')->user()->id)->where('id', $id)->first();
         if (!$post) {
             Toastr::error(t("Not Found"));
@@ -146,6 +174,11 @@ class PostController extends Controller
      */
     public function edit($id)
     {
+        if (Auth::guard('company')->user()->status == 0) {
+            Toastr::warning(t('The Company Status is inActive'));
+            return redirect()->back();
+        }
+
         $post = Post::where('company_id', Auth::guard('company')->user()->id)->where('id', $id)->first();
         if (!$post) {
             Toastr::error(t("Not Found"));
@@ -171,6 +204,11 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (Auth::guard('company')->user()->status == 0) {
+            Toastr::warning(t('The Company Status is inActive'));
+            return redirect()->back();
+        }
+
         $post = Post::where('company_id', Auth::guard('company')->user()->id)->where('id', $id)->first();
         if (!$post) {
             Toastr::error(t("Not Found"));
@@ -198,6 +236,11 @@ class PostController extends Controller
 
     public function destroy($id)
     {
+        if (Auth::guard('company')->user()->status == 0) {
+            Toastr::success(t('The Company Status is inActive'));
+            return redirect()->back();
+        }
+
         $post = Post::where('company_id', Auth::guard('company')->user()->id)->where('id', $id)->first();
         if (!$post) {
             Toastr::error(t("Not Found"));

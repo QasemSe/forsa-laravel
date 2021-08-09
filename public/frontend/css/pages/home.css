@@ -1,0 +1,146 @@
+.svg-icon svg
+{
+    width: 1.5rem; 
+    height: 1.5rem;
+}
+
+.svg-icon.svg-icon-2x svg
+{
+    width: 2rem; 
+    height: 2rem;
+}
+
+.svg-icon.svg-icon-3x svg
+{
+    width: 2.2rem; 
+    height: 2.2rem;
+}
+
+.svg-icon.svg-icon-4x svg
+{
+    width: 2.7rem; 
+    height: 2.7rem;
+}
+
+.svg-icon-primary svg g [fill]
+{
+    fill: #513caa;
+}
+
+.svg-icon-secondary svg g [fill]
+{
+    fill: #ed9a00;
+}
+
+.svg-icon-success svg g [fill]
+{
+    fill: #3ab58c;
+}
+
+.svg-icon-info svg g [fill]
+{
+    fill: #0dcaf0;
+}
+
+.svg-icon-warning svg g [fill]
+{
+    fill: #ed9a00;
+}
+
+.svg-icon-danger svg g [fill]
+{
+    fill: #e2391b;
+}
+
+.svg-icon-light svg g [fill]
+{
+    fill: #efeeee;
+}
+
+.svg-icon-dark svg g [fill]
+{
+    fill: #130b51;
+}
+
+.phone-slider
+{
+    position: relative;
+
+    max-width: 30vw;
+}
+.phone-slider .swiper-container
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    overflow: hidden;
+
+    width: 90%;
+    height: 96.2%;
+    padding: 0;
+
+    list-style: none;
+
+    -webkit-transform: translate(-50%, -50%);
+
+    -ms-transform: translate(-50%, -50%);
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 12% / 6%;
+    box-shadow: 0 10px 60px rgba(19, 11, 81, .3);
+}
+
+.swiper-wrapper
+{
+    position: relative;
+    z-index: 1;
+
+    display: -webkit-box;
+
+    display: -webkit-flex;
+
+    display: -ms-flexbox;
+
+    display: flex;
+
+    box-sizing: content-box; 
+    width: 100%;
+    height: 100%;
+
+    -webkit-transition-property: -webkit-transform;
+
+    transition-property: -webkit-transform;
+
+    transition-property: transform;
+
+    transition-property: transform, -webkit-transform;
+}
+
+.swiper-slide
+{
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    -webkit-transition-property: -webkit-transform;
+
+    transition-property: -webkit-transform;
+
+    transition-property: transform;
+
+    transition-property: transform, -webkit-transform; 
+
+    -webkit-flex-shrink: 0; 
+
+    -ms-flex-negative: 0; 
+
+    flex-shrink: 0;
+}
+
+.swiper-slide-invisible-blank
+{
+    visibility: hidden;
+}
