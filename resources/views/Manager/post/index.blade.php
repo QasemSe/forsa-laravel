@@ -17,17 +17,6 @@
                     <div class="card-title">
                         <h3 class="card-label">{{ t('Posts') }}</h3>
                     </div>
-
-                    <div class="card-toolbar">
-
-                        <!--end::Dropdown-->
-                        <!--begin::Button-->
-                        <a href="{{ route('post.add') }}" class="btn btn-primary font-weight-bolder">
-                            <span class="svg-icon svg-icon-md"><i class="fa fa-plus"></i></span>
-                            {{ t("Add New") }}
-                        </a>
-                        <!--end::Button-->
-                    </div>
                 </div>
                 <div class="card-body">
                     <!--begin: Datatable-->

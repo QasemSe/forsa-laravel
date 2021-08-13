@@ -86,7 +86,7 @@ return [
     'Applicant Detail' => 'Applicant Detail',
     'Company Detail' => 'Company Detail',
     'Details' => 'Details',
-    'Notes' => 'Notes',
+    'Notes' => 'Proposal',
     'Accepted' => 'Accepted',
     'Canceled' => 'Canceled',
     'Register' => 'Register',
@@ -140,8 +140,8 @@ return [
   'Archive' => 'Archive',
   'The companies you train with' => 'The companies you train with',
   'New Applicants' => 'New Applicants',
-  
-  'The Company Status is inActive' => 'The Company Status is inActive',  
-  'Change status' => 'Change status',  
+
+  'The Company Status is inActive' => 'The Company Status is inActive',
+  'Change status' => 'Change status',
   'Success To Update Status' => 'Success To Update Status',
 ];

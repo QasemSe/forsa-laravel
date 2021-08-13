@@ -62,16 +62,16 @@ class CompanyController extends Controller
 
                 $btn = '';
 
-                $btn .= "<a data-toggle='tooltip' data-placement='top' data-original-title='تعديل'
+                $btn .= "<a data-toggle='tooltip' data-placement='top' data-original-title='عرض'
                         href=" . route('company.show', $row->id) . "
                         class=' btn btn-outline-primary btn-sm  btn-icon btn-icon-sm'>
                         <i class='fa fa-eye'></i>
                     </a> ";
 
-                $btn .= "<a data-toggle='tooltip' data-placement='top' data-original-title='تعديل'
-                        href=" . route('company.edit', $row->id) . "
-                        class=' btn btn-outline-primary btn-sm  btn-icon btn-icon-sm'>
-                        <i class='fa fa-edit'></i>
+                $btn .= "<a data-toggle='tooltip' data-placement='top' data-original-title='حذف'
+                        href=" . route('company.delete', $row->id) . "
+                        class=' btn btn-outline-danger btn-sm btn-icon btn-icon-sm'>
+                        <i class='fa fa-trash'></i>
                     </a> ";
 
                 // $btn .= "<button data-toggle='tooltip' data-placement='top' data-original-title='حذف'

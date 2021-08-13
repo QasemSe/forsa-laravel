@@ -48,10 +48,10 @@ class DashboardController extends Controller
         $this->validationRules["password"] = 'nullable|min:6';
         $this->validationRules["profile_image"] = 'nullable|image';
         $this->validationRules["banner_image"] = 'nullable|image';
-        $this->validationRules["mobile_number"] = 'required|numeric';
-        $this->validationRules["address"] = 'required';
-        $this->validationRules["state"] = 'required';
-        $this->validationRules["description"] = 'required';
+        $this->validationRules["mobile_number"] = 'nullable|numeric';
+        $this->validationRules["address"] = 'nullable';
+        $this->validationRules["state"] = 'nullable';
+        $this->validationRules["description"] = 'nullable';
 
         $validator = JsValidator::make($this->validationRules, $this->validationMessages);
         return view('Company.profile.profile')
@@ -67,10 +67,10 @@ class DashboardController extends Controller
         $this->validationRules["password"] = 'nullable|min:6';
         $this->validationRules["profile_image"] = 'nullable|image';
         $this->validationRules["banner_image"] = 'nullable|image';
-        $this->validationRules["mobile_number"] = 'required|numeric';
-        $this->validationRules["address"] = 'required';
-        $this->validationRules["state"] = 'required';
-        $this->validationRules["description"] = 'required';
+        $this->validationRules["mobile_number"] = 'nullable|numeric';
+        $this->validationRules["address"] = 'nullable';
+        $this->validationRules["state"] = 'nullable';
+        $this->validationRules["description"] = 'nullable';
 
         $request->validate($this->validationRules);
 

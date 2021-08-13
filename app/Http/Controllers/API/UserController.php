@@ -7,6 +7,7 @@ use App\Http\Resources\ApplicantsResource;
 use App\Http\Resources\CompanyResource;
 use App\Http\Resources\PostDetailsResource;
 use App\Http\Resources\PostResource;
+use App\Http\Resources\UserPostResource;
 use App\Http\Resources\UserResource;
 use App\Models\Applicant;
 use App\Models\Company;
@@ -128,7 +129,7 @@ class UserController extends Controller
         $posts = Post::where('status', 1)->paginate(5);
         if ($posts->count() > 0) {
             return $this->sendResponse([
-                'items' => PostResource::collection($posts),
+                'items' => UserPostResource::collection($posts),
                 'paginate' => paginate($posts),
             ]);
         } else {

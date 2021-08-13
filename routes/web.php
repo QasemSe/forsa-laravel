@@ -113,16 +113,16 @@ Route::group(
                 Route::post('company/store', 'CompanyController@store')->name('company.store');
                 Route::get('company/getCompanyData', 'CompanyController@getCompanyData')->name('company.getCompanyData');
                 Route::get('company/show/{id}', 'CompanyController@show')->name('company.show');
-                Route::get('company/edit/{id}', 'CompanyController@edit')->name('company.edit');
-                Route::post('company/update/{id}', 'CompanyController@update')->name('company.update');
+//                Route::get('company/edit/{id}', 'CompanyController@edit')->name('company.edit');
+//                Route::post('company/update/{id}', 'CompanyController@update')->name('company.update');
                 Route::post('company/delete/{id}', 'CompanyController@destroy')->name('company.delete');
 
 
 
                 // Posts
                 Route::get('posts', 'PostController@index')->name('post.index');
-                Route::get('post/add', 'PostController@create')->name('post.add');
-                Route::post('post/store', 'PostController@store')->name('post.store');
+//                Route::get('post/add', 'PostController@create')->name('post.add');
+//                Route::post('post/store', 'PostController@store')->name('post.store');
                 Route::get('post/getPostData', 'PostController@getPostData')->name('post.getPostData');
                 Route::get('post/show/{id}', 'PostController@show')->name('post.show');
                 Route::get('post/edit/{id}', 'PostController@edit')->name('post.edit');

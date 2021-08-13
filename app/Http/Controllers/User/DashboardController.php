@@ -50,12 +50,12 @@ class DashboardController extends Controller
         $this->validationRules["image"] = 'nullable|image';
         $this->validationRules["email"] = 'required|unique:users,email,' . $user->id;
         $this->validationRules["password"] = 'nullable|min:6';
-        $this->validationRules["mobile_number"] = 'required|numeric';
-        $this->validationRules["avarage"] = 'required|numeric';
-        $this->validationRules["specialize_id"] = 'required|exists:specializes,id';
-        $this->validationRules["degree_id"] = 'required|exists:degrees,id';
-        $this->validationRules["university_id"] = 'required|exists:universities,id';
-        $this->validationRules["skills_id"] = 'required|min:1|exists:skills,id';
+        $this->validationRules["mobile_number"] = 'nullable|numeric';
+        $this->validationRules["avarage"] = 'nullable|numeric';
+        $this->validationRules["specialize_id"] = 'nullable|exists:specializes,id';
+        $this->validationRules["degree_id"] = 'nullable|exists:degrees,id';
+        $this->validationRules["university_id"] = 'nullable|exists:universities,id';
+        $this->validationRules["skills_id"] = 'nullable|min:1|exists:skills,id';
 
         $validator = JsValidator::make($this->validationRules, $this->validationMessages);
         $degrees = Degree::all();
@@ -79,12 +79,12 @@ class DashboardController extends Controller
         $this->validationRules["image"] = 'nullable|image';
         $this->validationRules["email"] = 'required|unique:users,email,' . $user->id;
         $this->validationRules["password"] = 'nullable|min:6';
-        $this->validationRules["mobile_number"] = 'required|numeric';
-        $this->validationRules["avarage"] = 'required|numeric';
-        $this->validationRules["specialize_id"] = 'required|exists:specializes,id';
-        $this->validationRules["degree_id"] = 'required|exists:degrees,id';
-        $this->validationRules["university_id"] = 'required|exists:universities,id';
-        $this->validationRules["skills_id"] = 'required|min:1|exists:skills,id';
+        $this->validationRules["mobile_number"] = 'nullable|numeric';
+        $this->validationRules["avarage"] = 'nullable|numeric';
+        $this->validationRules["specialize_id"] = 'nullable|exists:specializes,id';
+        $this->validationRules["degree_id"] = 'nullable|exists:degrees,id';
+        $this->validationRules["university_id"] = 'nullable|exists:universities,id';
+        $this->validationRules["skills_id"] = 'nullable|min:1|exists:skills,id';
 
         $request->validate($this->validationRules);
 
